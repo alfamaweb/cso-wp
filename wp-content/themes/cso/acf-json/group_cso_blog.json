@@ -1,0 +1,199 @@
+{
+    "key": "group_cso_blog",
+    "title": "Blog",
+    "fields": [
+        {
+            "key": "field_cso_blog_tab_0",
+            "label": "Hero",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_blog_blog_hero_titulo",
+            "label": "Título",
+            "name": "blog_hero_titulo",
+            "type": "textarea",
+            "instructions": "Quebra de linha é respeitada.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Notícias de Engenharia",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_blog_blog_hero_texto",
+            "label": "Texto de apoio",
+            "name": "blog_hero_texto",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Acompanhe as novidades da CSO Engenharia…",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_blog_blog_hero_botao",
+            "label": "Botão",
+            "name": "blog_hero_botao",
+            "type": "link",
+            "instructions": "Vazio: \"Ver Empreendimentos\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_cso_blog_blog_hero_imagem",
+            "label": "Imagem de fundo",
+            "name": "blog_hero_imagem",
+            "type": "image",
+            "instructions": "1920×450. Vazio usa a imagem destacada da página.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_cso_blog_tab_5",
+            "label": "Listagem",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_blog_blog_kicker",
+            "label": "Rótulo (acima do título)",
+            "name": "blog_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Blog",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_blog_blog_titulo",
+            "label": "Título",
+            "name": "blog_titulo",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Fique por dentro das notícias",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_blog_msg_8",
+            "label": "Sobre esta seção",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Os cards são os posts publicados (9 por página); as abas são as categorias com posts.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "aw_pagina",
+                "operator": "==",
+                "value": "blog"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "page-blog.php",
+    "show_in_rest": 0,
+    "modified": 1790800000
+}

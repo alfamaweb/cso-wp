@@ -1,0 +1,426 @@
+{
+    "key": "group_aw_opcoes",
+    "title": "Opções do Site",
+    "fields": [
+        {
+            "key": "field_cso_opcoes_tab_0",
+            "label": "Cabeçalho",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_opcoes_logo",
+            "label": "Logo",
+            "name": "logo",
+            "type": "image",
+            "instructions": "Vazio usa o logo do tema.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "svg,png,webp"
+        },
+        {
+            "key": "field_cso_opcoes_indices_economicos",
+            "label": "Índices econômicos (barra superior)",
+            "name": "indices_economicos",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Adicionar índice",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cso_opcoes_nome",
+                    "label": "Índice",
+                    "name": "nome",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "IGP-M",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_cso_opcoes_valor",
+                    "label": "Valor",
+                    "name": "valor",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "35",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "-0,73%",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_cso_opcoes_referencia",
+                    "label": "Referência",
+                    "name": "referencia",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "35",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "2026",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_cso_opcoes_portal_cliente_url",
+            "label": "Portal do Cliente — link",
+            "name": "portal_cliente_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https://"
+        },
+        {
+            "key": "field_cso_opcoes_tab_7",
+            "label": "Rodapé",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_opcoes_logo_rodape",
+            "label": "Logo do rodapé",
+            "name": "logo_rodape",
+            "type": "image",
+            "instructions": "Versão clara. Vazio usa o logo do tema.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "svg,png,webp"
+        },
+        {
+            "key": "field_cso_opcoes_copyright",
+            "label": "Texto de copyright",
+            "name": "copyright",
+            "type": "text",
+            "instructions": "Vazio usa o texto padrão com o ano atual. O link da Política de Privacidade é adicionado depois.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "© 2026 CSO Engenharia. Todos os direitos reservados.",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_opcoes_tab_10",
+            "label": "Contato",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_opcoes_whatsapp_numero",
+            "label": "WhatsApp — número",
+            "name": "whatsapp_numero",
+            "type": "text",
+            "instructions": "Com DDI e DDD, só dígitos. Vazio esconde o botão flutuante.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "5575999999999",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_opcoes_telefone",
+            "label": "Telefone",
+            "name": "telefone",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "(75) 3623-2546",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_opcoes_email_contato",
+            "label": "E-mail de contato",
+            "name": "email_contato",
+            "type": "email",
+            "instructions": "Exibido no rodapé e destinatário dos formulários. Vazio usa o e-mail do administrador nos formulários.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "cso@csoengenharia.com",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cso_opcoes_endereco",
+            "label": "Endereço",
+            "name": "endereco",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Rua da Concórdia, 313 - Queimadinha,\nFeira de Santana - BA, 44050-132",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_opcoes_tab_15",
+            "label": "Redes sociais",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_opcoes_instagram_usuario",
+            "label": "Instagram — usuário",
+            "name": "instagram_usuario",
+            "type": "text",
+            "instructions": "Sem @. Usado na seção Instagram das páginas.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "csoengenharia",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_opcoes_redes_sociais",
+            "label": "Redes sociais (header e rodapé)",
+            "name": "redes_sociais",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Adicionar rede",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cso_opcoes_nome_2",
+                    "label": "Nome",
+                    "name": "nome",
+                    "type": "text",
+                    "instructions": "Instagram e Facebook já têm ícone.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Instagram",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_cso_opcoes_url",
+                    "label": "URL",
+                    "name": "url",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "https://"
+                },
+                {
+                    "key": "field_cso_opcoes_icone",
+                    "label": "Ícone (SVG)",
+                    "name": "icone",
+                    "type": "image",
+                    "instructions": "Só para outras redes.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "svg"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "aw-opcoes"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1790800000
+}

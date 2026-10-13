@@ -1,0 +1,324 @@
+/*
+ * Quem Somos — estilos exclusivos de page-quem-somos.php.
+ *
+ * Medidas do frame "quem somos" do Figma (1600px, conteúdo em 1200px).
+ * Hero, bloco "A empresa", indicadores, setas e Instagram vêm de
+ * assets/css/style.css (.pagina-cso). Seletores aninhados (sintaxe SCSS /
+ * CSS Nesting nativo), sem concatenação "&__"; só tokens var(--aw-*).
+ */
+
+/* ==========================================================================
+   2. Institucional (quem-somos-section: indicadores em cima, texto embaixo)
+   ========================================================================== */
+.quem-somos .secao--empresa {
+  .empresa--institucional {
+    .empresa__texto {
+      gap: 32px;
+    }
+
+    /* Dois parágrafos com 32px entre si (Figma: left-content gap 32) */
+    .empresa__descricao {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+      p + p {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+   3. História e Evolução da Marca (fundo #1E2530, carrossel de marcos)
+   ========================================================================== */
+.quem-somos .secao--historia {
+  background: var(--aw-primaria-clara);
+
+  .historia {
+    overflow: hidden;
+
+    .swiper-slide {
+      height: auto;
+    }
+  }
+
+  /* Card: 384×450, padding 20/32 (32 embaixo), raio 8, borda #E5E7EB */
+  .marco {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    min-height: 450px;
+    padding: 20px 32px 32px;
+    background: var(--aw-fundo);
+    border: 1px solid var(--aw-linha);
+    border-radius: var(--aw-raio);
+  }
+
+  .marco__logo {
+    display: block;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+
+    &.marco__logo--vazio {
+      display: grid;
+      place-items: center;
+      color: var(--aw-marca);
+
+      svg {
+        width: 48px;
+        height: auto;
+      }
+    }
+  }
+
+  .marco__periodo {
+    font-family: var(--aw-fonte-titulo);
+    font-size: clamp(1.625rem, 1.3rem + 1vw, 2rem); /* 26 → 32px */
+    font-weight: 700;
+    line-height: 1; /* Figma: caixa de 31px */
+    color: var(--aw-acento);
+  }
+
+  .marco__texto {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--aw-tinta-suave);
+
+    /* Parágrafos separados por uma linha em branco, como no layout */
+    p + p {
+      margin-top: 1.6em;
+    }
+  }
+}
+
+/* ==========================================================================
+   4. Responsabilidade social + Política de qualidade (fundo areia #F7F5F2)
+   --------------------------------------------------------------------------
+   Linha 1: imagem 482×500 à esquerda, texto 694 à direita.
+   Linha 2: texto 482 à esquerda, imagem 694×400 à direita. 48px entre linhas.
+   ========================================================================== */
+.quem-somos .secao--institucional {
+  background: var(--aw-fundo-alt);
+
+  .institucional {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .institucional__linha {
+    display: grid;
+    gap: 24px;
+    align-items: center;
+
+    &.institucional__linha--imagem-esquerda {
+      grid-template-columns: minmax(0, 482fr) minmax(0, 694fr);
+
+      .institucional__imagem {
+        order: -1;
+        aspect-ratio: 482 / 500;
+      }
+    }
+
+    &.institucional__linha--imagem-direita {
+      grid-template-columns: minmax(0, 482fr) minmax(0, 694fr);
+
+      .institucional__imagem {
+        aspect-ratio: 694 / 400;
+      }
+    }
+
+    @media (max-width: 991.98px) {
+      &.institucional__linha--imagem-esquerda,
+      &.institucional__linha--imagem-direita {
+        grid-template-columns: 1fr;
+        gap: 32px;
+
+        .institucional__imagem {
+          order: -1;
+          aspect-ratio: 16 / 10;
+        }
+      }
+    }
+  }
+
+  .institucional__texto {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .institucional__titulos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .titulo-secao--empresa {
+    line-height: 1.15;
+  }
+
+  .institucional__descricao {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--aw-tinta-suave);
+  }
+
+  .institucional__imagem {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--aw-raio);
+    background: var(--aw-linha);
+  }
+}
+
+/* ==========================================================================
+   Mobile — Figma "quem-somos-mobile" (390px). Vale até 767.98px.
+   Laterais de 20px; componentes compartilhados no bloco "Mobile" de
+   style.css.
+   ========================================================================== */
+@media (max-width: 767.98px) {
+  .quem-somos {
+    .container {
+      padding-inline: 20px;
+    }
+
+    /* ---- Hero: título 36, texto 15 e 32px até o botão ------------------- */
+    .hero.hero--interna {
+      .hero__conteudo {
+        gap: 32px;
+      }
+
+      .hero__titulo {
+        font-size: 36px;
+        line-height: 1.14;
+      }
+
+      .hero__subtitulo {
+        font-size: 15px;
+        line-height: 1.6;
+      }
+    }
+
+    /* ---- Indicadores (fundo #F8F9FA) + A empresa (faixa branca) ----------
+       No layout são duas seções; aqui é uma só, então a parte da empresa
+       ganha uma faixa branca de ponta a ponta (border-image) com 56px em
+       cima e embaixo. */
+    .secao--empresa {
+      padding-bottom: 56px;
+      overflow-x: clip;
+
+      > .container {
+        gap: 104px; /* 48 do fim dos indicadores + 56 do topo da faixa */
+      }
+
+      .indicadores__cabecalho {
+        align-items: flex-start;
+        gap: 8px;
+        text-align: left;
+      }
+
+      .titulo-secao--indicadores {
+        font-size: 28px;
+        line-height: 1.25;
+        color: var(--aw-primaria);
+      }
+
+      .empresa--institucional {
+        gap: 32px;
+        border-image: linear-gradient(var(--aw-fundo), var(--aw-fundo)) fill 0 / 0 / 56px 100vmax;
+
+        .empresa__texto,
+        .empresa__descricao {
+          gap: 16px;
+        }
+
+        .empresa__titulos {
+          gap: 16px;
+        }
+      }
+
+      .empresa__imagem {
+        aspect-ratio: 350 / 280;
+      }
+    }
+
+    /* ---- História: 2 marcos por vez, setas embaixo ---------------------- */
+    .secao--historia {
+      padding-block: 56px;
+
+      .secao__cabecalho .setas {
+        display: none;
+      }
+
+      .marco {
+        gap: 16px;
+        min-height: 0;
+        padding: 24px;
+      }
+
+      .marco__logo {
+        width: 48px;
+        height: 48px;
+      }
+
+      .marco__periodo {
+        font-size: 24px;
+        line-height: 30px;
+      }
+
+      .marco__texto {
+        font-size: 14px;
+        line-height: 1.57;
+      }
+    }
+
+    /* ---- Institucional: título → texto → imagem 350×200, divisor entre -- */
+    .secao--institucional {
+      padding-block: 56px;
+
+      .institucional {
+        gap: 48px;
+      }
+
+      .institucional__linha {
+        &.institucional__linha--imagem-esquerda,
+        &.institucional__linha--imagem-direita {
+          gap: 24px;
+
+          .institucional__imagem {
+            order: 0;
+            aspect-ratio: 350 / 200;
+          }
+        }
+
+        & + .institucional__linha {
+          padding-top: 48px;
+          border-top: 1px solid var(--aw-linha);
+        }
+      }
+
+      .institucional__texto {
+        gap: 24px;
+      }
+
+      .institucional__titulos {
+        gap: 8px;
+      }
+
+      .institucional__descricao {
+        font-size: 15px;
+        line-height: 1.6;
+      }
+    }
+
+    /* ---- Instagram (2×2) ------------------------------------------------ */
+    .secao--instagram {
+      padding-block: 56px;
+    }
+  }
+}

@@ -1,0 +1,918 @@
+/*
+ * Empreendimento — estilos exclusivos de single-empreendimento.php.
+ *
+ * Medidas do frame "empreendimento - interna" do Figma (1600px, conteúdo em
+ * 1200px). Hero, setas, kicker, títulos e botões vêm de assets/css/style.css
+ * (.pagina-cso). Seletores aninhados (sintaxe SCSS / CSS Nesting nativo), sem
+ * concatenação "&__"; só tokens var(--aw-*).
+ *
+ * Abaixo de 992px as linhas texto + imagem empilham e o card do hero desce
+ * para baixo do título. Até 767px vale o frame "empreendimento-interna-mobile"
+ * do Figma (bloco "Mobile" no fim do arquivo).
+ */
+
+/* ==========================================================================
+   1. Hero (600px) — selo + nome à esquerda, card de vendas e contato à direita
+   ========================================================================== */
+.empreendimento-interna .hero--empreendimento {
+  /* Card de 476px centrado nos 600px do hero */
+  .hero__inner {
+    padding-block: 62px;
+  }
+
+  .emp-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+
+    @media (max-width: 991.98px) {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 40px;
+    }
+  }
+
+  .emp-hero__textos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    max-width: 809px;
+  }
+
+  /* Figma: Sora 600 48/60 (menor que o hero da home) */
+  .emp-hero__titulo {
+    font-size: clamp(2rem, 1.3rem + 2.8vw, 3rem);
+    line-height: 1.25;
+    letter-spacing: normal;
+  }
+}
+
+/* Selo de status (padding 6/12, raio 4, Bold 11 caixa-alta) */
+.empreendimento-interna .emp-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: var(--aw-raio-sm);
+  background: var(--aw-linha);
+  color: var(--aw-tinta-suave);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 13px;
+  text-transform: uppercase;
+
+  &.emp-badge--lancamento {
+    background: var(--aw-acento);
+    color: var(--aw-fundo);
+  }
+
+  &.emp-badge--esgotado {
+    background: var(--aw-primaria);
+    color: var(--aw-fundo);
+  }
+}
+
+/* ---- Card (384×476, padding 20/16, raio 8, sombra 0 4 20 / 10%) --------- */
+.empreendimento-interna .emp-ficha {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 0 0 384px;
+  width: 384px;
+  padding: 20px 16px;
+  background: var(--aw-fundo);
+  border-radius: var(--aw-raio);
+  box-shadow: var(--aw-sombra);
+
+  @media (max-width: 991.98px) {
+    flex-basis: auto;
+    width: 100%;
+    max-width: 480px;
+  }
+
+  .emp-ficha__cabecalho {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .emp-ficha__nome {
+    font-family: var(--aw-fonte-titulo);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    color: var(--aw-primaria);
+  }
+
+  .emp-ficha__local {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: var(--aw-tinta-fraca);
+    text-transform: uppercase;
+  }
+
+  .emp-ficha__vendas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .emp-ficha__barra {
+    height: 4px;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--aw-linha);
+
+    span {
+      display: block;
+      width: var(--progresso, 0%);
+      height: 100%;
+      border-radius: 2px;
+      background: var(--aw-acento);
+    }
+
+    &.is-completa span {
+      background: var(--aw-primaria);
+    }
+  }
+
+  .emp-ficha__percentual {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 13px;
+    color: var(--aw-tinta-suave);
+    text-transform: uppercase;
+  }
+
+  /* "Preencha seus dados": 24px abaixo das vendas, 12px até os campos */
+  .emp-ficha__titulo {
+    margin-top: 12px;
+    font-family: var(--aw-fonte-titulo);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 25px;
+    color: var(--aw-primaria);
+  }
+
+  .emp-ficha__form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .emp-ficha__titulo {
+      margin-top: 12px;
+    }
+  }
+
+  .emp-ficha__campos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Botão 44px de largura total, 12px abaixo do aceite (gap do form) */
+  .emp-ficha__enviar {
+    width: 100%;
+  }
+
+  .aw-form-status {
+    margin-top: 0;
+    font-size: 14px;
+  }
+}
+
+/* ==========================================================================
+   2. Diferenciais (fundo areia, cards 282×80 com os gradientes dos indicadores)
+   ========================================================================== */
+.empreendimento-interna .secao--diferenciais {
+  background: var(--aw-fundo-alt);
+
+  .secao__cabecalho {
+    align-items: flex-end;
+    margin-bottom: 40px;
+  }
+
+  .secao__titulos {
+    gap: 8px;
+  }
+
+  .titulo-secao {
+    line-height: 1.25;
+  }
+
+  .diferenciais {
+    overflow: hidden;
+  }
+
+  .diferencial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    height: 80px;
+    padding: 20px 24px;
+    border-radius: var(--aw-raio-lg);
+    background: var(--aw-grad-1);
+
+    &:nth-child(4n + 2) {
+      background: var(--aw-grad-2);
+    }
+
+    &:nth-child(4n + 3) {
+      background: var(--aw-grad-3);
+    }
+
+    &:nth-child(4n + 4) {
+      background: var(--aw-grad-4);
+    }
+  }
+
+  .diferencial__icone {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  .diferencial__titulo {
+    font-family: var(--aw-fonte-titulo);
+    font-size: clamp(18px, 1rem + 0.6vw, 24px);
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--aw-fundo);
+  }
+}
+
+/* ==========================================================================
+   3. Galeria (fundo #F8F9FA, carrossel de ponta a ponta, slide 587×500)
+   ========================================================================== */
+.empreendimento-interna .secao--galeria {
+  background: var(--aw-fundo-frio);
+
+  .secao__cabecalho {
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+
+  .titulo-secao {
+    line-height: 1.25;
+  }
+
+  .galeria {
+    overflow: hidden;
+  }
+
+  .galeria__slide {
+    width: 587px;
+
+    @media (max-width: 767.98px) {
+      width: 82vw;
+    }
+
+    a {
+      display: block;
+      aspect-ratio: 587 / 500;
+      overflow: hidden;
+      border-radius: var(--aw-raio);
+      background: var(--aw-linha);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 600ms ease;
+    }
+
+    a:hover img {
+      transform: scale(1.03);
+    }
+  }
+
+  /* Bolinhas 20px, 10px entre elas, 40px abaixo das fotos */
+  .galeria__paginacao {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
+
+    .swiper-pagination-bullet {
+      width: 20px;
+      height: 20px;
+      margin: 0 !important; /* o gap acima substitui a margem do Swiper */
+      border: 1px solid var(--aw-acento);
+      background: transparent;
+      box-shadow: 0 6px 16px -6px rgb(0 0 0 / 15%);
+      opacity: 1;
+      transition: background var(--aw-transicao);
+    }
+
+    .swiper-pagination-bullet-active {
+      background: var(--aw-acento);
+    }
+  }
+}
+
+/* ==========================================================================
+   4. Vídeos (fundo #1E2530, um vídeo por vez 1200×500)
+   ========================================================================== */
+.empreendimento-interna .secao--videos {
+  background: var(--aw-primaria-clara);
+
+  .videos {
+    overflow: hidden;
+  }
+
+  .video-capa {
+    position: relative;
+    display: block;
+    aspect-ratio: 1200 / 500;
+    overflow: hidden;
+    border-radius: var(--aw-raio);
+    background: var(--aw-primaria);
+
+    @media (max-width: 767.98px) {
+      aspect-ratio: 16 / 10;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  /* Play: círculo branco de 61px, ícone 32px azul da marca */
+  .video-capa__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    place-items: center;
+    width: 61px;
+    height: 61px;
+    border: 1px solid var(--aw-fundo);
+    border-radius: 999px;
+    background: var(--aw-fundo);
+    box-shadow: 0 6px 16px -6px rgb(0 0 0 / 15%);
+    color: var(--aw-marca);
+    transform: translate(-50%, -50%);
+    transition: transform var(--aw-transicao), background var(--aw-transicao), color var(--aw-transicao);
+
+    svg {
+      width: 32px;
+      height: 32px;
+      margin-left: 3px; /* compensa o peso visual do triângulo */
+    }
+  }
+
+  .video-capa:hover .video-capa__play {
+    background: var(--aw-acento);
+    border-color: var(--aw-acento);
+    color: var(--aw-fundo);
+    transform: translate(-50%, -50%) scale(1.06);
+  }
+}
+
+/* ==========================================================================
+   Linha texto (482) + imagem (694), 24px entre eles — plantas, obra, mapa
+   ========================================================================== */
+.empreendimento-interna .linha-midia {
+  display: grid;
+  grid-template-columns: minmax(0, 482fr) minmax(0, 694fr);
+  gap: 24px;
+  align-items: center;
+
+  &.linha-midia--invertida {
+    grid-template-columns: minmax(0, 694fr) minmax(0, 482fr);
+  }
+
+  @media (max-width: 991.98px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+
+    &.linha-midia--invertida {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .linha-midia__texto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .secao__titulos {
+    gap: 16px;
+  }
+
+  .titulo-secao--bloco {
+    line-height: 1.15;
+  }
+
+  .linha-midia__visual {
+    overflow: hidden;
+    border-radius: var(--aw-raio);
+    background: var(--aw-linha);
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 694 / 460;
+      object-fit: cover;
+    }
+  }
+}
+
+/* ==========================================================================
+   5. Plantas (fundo areia) — tipologias como abas da imagem
+   ========================================================================== */
+.empreendimento-interna .secao--plantas {
+  background: var(--aw-fundo-alt);
+
+  .plantas__lista {
+    display: flex;
+    flex-direction: column;
+    margin-top: -8px; /* lista com line-height 200%: alinha ao ritmo do layout */
+  }
+
+  .plantas__item {
+    padding: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 32px;
+    color: var(--aw-tinta-suave);
+    text-align: left;
+    cursor: pointer;
+    transition: color var(--aw-transicao);
+
+    &:hover {
+      color: var(--aw-acento);
+    }
+
+    &.is-ativa {
+      font-weight: 600;
+      color: var(--aw-acento);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--aw-acento);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+
+  .plantas__imagem {
+    display: block;
+  }
+}
+
+/* Setas menores (32px, 16px entre elas) */
+.empreendimento-interna .setas--sm {
+  gap: 16px;
+
+  .setas__btn {
+    width: 32px;
+    height: 32px;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+/* ==========================================================================
+   6. Andamento da obra (fundo branco) — imagem à esquerda, etapas à direita
+   ========================================================================== */
+.empreendimento-interna .secao--obra {
+  background: var(--aw-fundo);
+
+  .obra {
+    gap: 28px;
+  }
+
+  .obra__etapas {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .obra__etapa {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Selo: padding 4/8, raio 4, Bold 11 caixa-alta */
+  .obra__selo {
+    flex: none;
+    padding: 4px 8px;
+    border-radius: var(--aw-raio-sm);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 13px;
+    text-transform: uppercase;
+  }
+
+  .obra__nome {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: var(--aw-primaria);
+  }
+
+  .obra__etapa--concluida .obra__selo {
+    background: var(--aw-etapa-ok-fundo);
+    color: var(--aw-etapa-ok);
+  }
+
+  .obra__etapa--andamento {
+    .obra__selo {
+      background: var(--aw-etapa-andamento-fundo);
+      color: var(--aw-etapa-andamento);
+    }
+
+    .obra__nome {
+      color: var(--aw-acento);
+    }
+  }
+
+  .obra__etapa--proxima {
+    .obra__selo {
+      background: var(--aw-fundo-tag);
+      color: var(--aw-etapa-proxima);
+    }
+
+    .obra__nome {
+      font-weight: 500;
+      color: var(--aw-etapa-proxima-tinta);
+    }
+  }
+
+  .obra__atualizacao {
+    font-family: var(--aw-fonte-titulo);
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--aw-tinta-fraca);
+  }
+}
+
+/* ==========================================================================
+   7. Localização (fundo branco) — texto e botões à esquerda, mapa 694×366
+   ========================================================================== */
+.empreendimento-interna .secao--localizacao {
+  background: var(--aw-fundo);
+
+  .local__texto {
+    max-width: 482px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--aw-tinta-corpo);
+
+    p + p {
+      margin-top: 1em;
+    }
+  }
+
+  .local__acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    .btn__icone {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .local__mapa {
+    img,
+    iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 694 / 366;
+      border: 0;
+      object-fit: cover;
+    }
+  }
+}
+
+/* Cabeçalho "Fale Conosco" e resumo do hero: só no mobile */
+.empreendimento-interna {
+  .emp-ficha__contato,
+  .emp-hero__subtitulo {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Mobile — Figma "empreendimento-interna-mobile" (390px). Até 767.98px.
+   ========================================================================== */
+@media (max-width: 767.98px) {
+  .empreendimento-interna {
+    .titulo-secao {
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    /* ---- Hero: selo, nome 32, resumo 14 e card "Fale Conosco" ----------- */
+    .hero--empreendimento {
+      .hero__inner {
+        padding: 32px 16px;
+      }
+
+      .emp-hero {
+        gap: 24px;
+      }
+
+      .emp-hero__textos {
+        gap: 24px;
+      }
+
+      .emp-hero__titulo {
+        font-size: 32px;
+        line-height: 1.25;
+      }
+
+      .emp-hero__subtitulo {
+        display: block;
+        margin-top: -16px; /* 8px entre nome e resumo */
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.43;
+      }
+    }
+
+    .emp-ficha {
+      gap: 16px;
+      max-width: none;
+      padding: 20px;
+
+      &.emp-ficha--com-form {
+        .emp-ficha__cabecalho,
+        .emp-ficha__vendas,
+        .emp-ficha__form > .emp-ficha__titulo {
+          display: none;
+        }
+      }
+
+      .emp-ficha__contato {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .emp-ficha__contato-titulo {
+        font-family: var(--aw-fonte-titulo);
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 23px;
+        color: var(--aw-primaria);
+      }
+
+      .emp-ficha__contato-texto {
+        font-size: 12px;
+        line-height: 15px;
+        color: var(--aw-tinta-fraca);
+      }
+
+      .emp-ficha__form {
+        gap: 16px;
+      }
+
+      .campo input {
+        height: 36px;
+
+        &::placeholder {
+          text-transform: none;
+        }
+      }
+
+      .emp-ficha__enviar {
+        min-height: 42px;
+        font-size: 15px;
+        line-height: 18px;
+      }
+    }
+
+    /* ---- Diferenciais: 4 por vez, cards 342×50, setas de 32px embaixo --- */
+    .secao--diferenciais {
+      .secao__cabecalho {
+        margin-bottom: 24px;
+
+        .setas {
+          display: none;
+        }
+      }
+
+      .diferencial {
+        justify-content: flex-start;
+        gap: 10px;
+        height: 50px;
+        padding: 13px 20px;
+      }
+
+      .diferencial__icone {
+        width: 24px;
+        height: 24px;
+      }
+
+      .diferencial__titulo {
+        font-size: 16px;
+        line-height: 20px;
+      }
+
+      .setas--mobile {
+        display: flex;
+      }
+    }
+
+    /* ---- Galeria: uma foto 342×220 por vez, bolinhas de 10px ------------ */
+    .secao--galeria {
+      .secao__cabecalho {
+        align-items: flex-start;
+        margin-bottom: 24px;
+        text-align: left;
+      }
+
+      /* No desktop o carrossel vai de ponta a ponta; aqui fica nas laterais de 24px */
+      .galeria {
+        margin-inline: 24px;
+      }
+
+      .galeria__slide {
+        width: 100%;
+
+        a {
+          aspect-ratio: 342 / 220;
+        }
+      }
+
+      .galeria__paginacao {
+        gap: 8px;
+        margin-top: 24px;
+
+        .swiper-pagination-bullet {
+          width: 10px;
+          height: 10px;
+          border-width: 1.5px;
+          box-shadow: none;
+        }
+      }
+    }
+
+    /* ---- Vídeos: 342×200, play de 56px, sem setas ----------------------- */
+    .secao--videos {
+      .secao__cabecalho {
+        margin-bottom: 24px;
+
+        .setas {
+          display: none;
+        }
+      }
+
+      .titulo-secao {
+        line-height: 1.25;
+      }
+
+      .video-capa {
+        aspect-ratio: 342 / 200;
+      }
+
+      .video-capa__play {
+        width: 56px;
+        height: 56px;
+
+        svg {
+          width: 28px;
+          height: 28px;
+        }
+      }
+    }
+
+    /* ---- Linhas texto + imagem (plantas, obra, localização) ------------- */
+    .linha-midia {
+      gap: 24px;
+
+      .linha-midia__texto {
+        gap: 24px;
+      }
+
+      .secao__titulos {
+        gap: 8px;
+      }
+    }
+
+    /* Plantas: tipologias em lista de texto (15px), imagem 342×220 */
+    .secao--plantas {
+      .plantas__lista {
+        margin-top: 0;
+      }
+
+      .plantas__item {
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 27px;
+
+        &.is-ativa {
+          font-weight: 600;
+        }
+      }
+
+      .setas--sm {
+        display: none;
+      }
+
+      .linha-midia__visual img {
+        aspect-ratio: 342 / 220;
+      }
+    }
+
+    /* Andamento da obra: padding 72/20, imagem 350×355 em cima, título 40 */
+    .secao--obra {
+      padding-block: 72px;
+
+      .container {
+        padding-inline: 20px;
+      }
+
+      .linha-midia__visual img {
+        aspect-ratio: 350 / 355;
+      }
+
+      .obra {
+        gap: 28px;
+      }
+
+      .secao__titulos {
+        gap: 16px;
+      }
+
+      .kicker {
+        font-size: 14px;
+        line-height: 18px;
+      }
+
+      .titulo-secao {
+        font-size: 40px;
+        line-height: 1.15;
+      }
+    }
+
+    /* Localização: título → texto → mapa 342×200 → botões empilhados */
+    .secao--localizacao {
+      .linha-midia--mapa {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .linha-midia__texto {
+        display: contents;
+      }
+
+      .secao__titulos {
+        order: 1;
+      }
+
+      .local__texto {
+        order: 2;
+        max-width: none;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.57;
+        color: var(--aw-tinta-fraca);
+      }
+
+      .local__mapa {
+        order: 3;
+
+        img,
+        iframe {
+          aspect-ratio: 342 / 200;
+        }
+      }
+
+      .local__acoes {
+        order: 4;
+        flex-direction: column;
+
+        .btn {
+          width: 100%;
+          min-width: 0;
+          font-size: 15px;
+          line-height: 18px;
+        }
+
+        .btn__icone {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}

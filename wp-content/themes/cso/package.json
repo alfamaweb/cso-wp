@@ -1,0 +1,16 @@
+{
+  "name": "alfama-web-v3",
+  "version": "3.0.0",
+  "description": "Starter theme WordPress da Alfamaweb — sucessor do Alfama WEB v2 / None Plate.",
+  "private": true,
+  "license": "GPL-2.0-or-later",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./assets/css/tailwind.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./assets/css/tailwind.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.2",
+    "tailwindcss": "^4.3.2"
+  }
+}

@@ -1,0 +1,497 @@
+/*
+ * Notícia (single.php) — estilos exclusivos do post único do blog.
+ *
+ * Medidas do frame "blog - interna" do Figma (1600px, conteúdo em 1200px).
+ * Cards de "Você também pode se interessar" vêm de assets/css/style.css
+ * (.post-card, .blog-grid). Seletores aninhados (sintaxe SCSS / CSS Nesting
+ * nativo), sem concatenação "&__"; só tokens var(--aw-*).
+ */
+
+/* ==========================================================================
+   1. Artigo
+   --------------------------------------------------------------------------
+   Grade: coluna principal 1098 + barra de compartilhar 79 (23px entre elas).
+   Topo da coluna principal: texto 584 + imagem 484 (30px entre eles).
+   ========================================================================== */
+.noticia .secao--noticia {
+  background: var(--aw-fundo);
+
+  .noticia__grade {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 79px;
+    gap: 23px;
+    align-items: start;
+  }
+
+  .noticia__principal {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    min-width: 0;
+  }
+
+  .noticia__topo {
+    display: grid;
+    grid-template-columns: minmax(0, 584fr) minmax(0, 484fr);
+    gap: 30px;
+    align-items: start;
+  }
+
+  .noticia__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .noticia__titulos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Categoria (mesmo selo do card) + data, 24px entre eles */
+  .noticia__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 24px;
+  }
+
+  .noticia__categoria {
+    padding: 4px 10px;
+    border-radius: var(--aw-raio-sm);
+    background: var(--aw-fundo-tag);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 13px;
+    color: var(--aw-acento);
+    text-transform: uppercase;
+    transition: background var(--aw-transicao), color var(--aw-transicao);
+
+    &:hover {
+      background: var(--aw-acento);
+      color: var(--aw-fundo);
+    }
+  }
+
+  .noticia__data {
+    font-family: var(--aw-fonte-titulo);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    color: var(--aw-cinza-400);
+    text-transform: uppercase;
+  }
+
+  .noticia__titulo {
+    font-family: var(--aw-fonte-titulo);
+    font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.25rem); /* 28 → 36px */
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--aw-primaria);
+  }
+
+  /* Texto de abertura e corpo: Instrument Sans 500 16/160%, justificado */
+  .noticia__abertura,
+  .noticia__conteudo {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--aw-tinta-fraca);
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .noticia__abertura > * + * {
+    margin-top: 1em;
+  }
+
+  .noticia__imagem {
+    margin: 0;
+
+    img {
+      width: 100%;
+      aspect-ratio: 484 / 327;
+      object-fit: cover;
+      border-radius: var(--aw-raio-lg);
+      background: var(--aw-linha);
+    }
+  }
+
+  /* ---- Corpo do post (saída do editor) — blocos com 40px entre si -------- */
+  .noticia__conteudo {
+    > * + * {
+      margin-top: 40px;
+    }
+
+    > * + :is(ul, ol) {
+      margin-top: 16px;
+    }
+
+    h2,
+    h3,
+    h4 {
+      font-family: var(--aw-fonte-titulo);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--aw-primaria);
+      text-align: left;
+    }
+
+    h2 {
+      font-size: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
+    }
+
+    h3 {
+      font-size: 1.375rem;
+    }
+
+    h4 {
+      font-size: 1.125rem;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.25em;
+      list-style: revert;
+      text-align: left;
+
+      li + li {
+        margin-top: 0.5em;
+      }
+
+      li::marker {
+        color: var(--aw-acento);
+      }
+    }
+
+    a {
+      color: var(--aw-acento);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+
+      &:hover {
+        color: var(--aw-acento-escuro);
+      }
+    }
+
+    strong {
+      font-weight: 700;
+      color: var(--aw-tinta-suave);
+    }
+
+    img,
+    video,
+    iframe {
+      border-radius: var(--aw-raio);
+    }
+
+    figure {
+      margin-inline: 0;
+    }
+
+    figcaption {
+      margin-top: 8px;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    blockquote {
+      padding: 8px 0 8px 24px;
+      border-left: 3px solid var(--aw-acento);
+      font-family: var(--aw-fonte-titulo);
+      font-size: 1.125rem;
+      font-weight: 600;
+      line-height: 1.5;
+      color: var(--aw-primaria);
+      text-align: left;
+    }
+  }
+
+  .noticia__paginas {
+    display: flex;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--aw-acento);
+  }
+
+  /* ---- Barra de compartilhar (Figma: 79×327, borda dourada, raio 16) ----- */
+  .noticia__compartilhar {
+    position: sticky;
+    top: calc(24px + var(--wp-admin--admin-bar--height, 0px)); /* não some atrás da admin bar */
+  }
+
+  .compartilhar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    min-height: 327px;
+    justify-content: center;
+    padding: 29px 0;
+    background: var(--aw-fundo);
+    border: 1px solid var(--aw-acento);
+    border-radius: var(--aw-raio-lg);
+  }
+
+  .compartilhar__link {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    color: var(--aw-acento);
+    transition: color var(--aw-transicao), transform var(--aw-transicao);
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    &:hover {
+      color: var(--aw-primaria);
+      transform: translateY(-2px);
+    }
+  }
+
+  /* ---- Responsivo ------------------------------------------------------- */
+  @media (max-width: 991.98px) {
+    .noticia__grade {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .noticia__topo {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .noticia__imagem {
+      order: -1;
+    }
+
+    .noticia__compartilhar {
+      position: static;
+      grid-row: 1;
+    }
+
+    .compartilhar {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      min-height: 0;
+      padding: 14px 20px;
+      border-radius: var(--aw-raio);
+      width: fit-content;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .noticia__abertura,
+    .noticia__conteudo {
+      text-align: left;
+    }
+  }
+}
+
+/* ==========================================================================
+   2. Você também pode se interessar (fundo areia, 3 cards)
+   ========================================================================== */
+.noticia .secao--relacionados {
+  background: var(--aw-fundo-alt);
+
+  @media (max-width: 767.98px) {
+    .secao__cabecalho--linha {
+      align-items: flex-end;
+    }
+  }
+}
+
+/* ==========================================================================
+   Mobile — Figma "blog-interna-mobile" (390px). Vale até 767.98px.
+   --------------------------------------------------------------------------
+   Ordem do layout: categoria + data → título → imagem → compartilhar →
+   texto. Grade, coluna e topo viram "contents" para os blocos entrarem numa
+   coluna só (gap 24).
+   ========================================================================== */
+@media (max-width: 767.98px) {
+  .noticia {
+    .container {
+      padding-inline: 20px;
+    }
+
+    .secao--noticia {
+      padding-block: 32px;
+
+      .noticia__grade {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+      }
+
+      .noticia__principal,
+      .noticia__topo,
+      .noticia__intro {
+        display: contents;
+      }
+
+      .noticia__titulos {
+        order: 1;
+        gap: 24px;
+      }
+
+      .noticia__imagem {
+        order: 2;
+
+        img {
+          aspect-ratio: 350 / 240;
+          border-radius: 12px;
+        }
+      }
+
+      .noticia__compartilhar {
+        order: 3;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding-block: 16px;
+        border-block: 1px solid var(--aw-linha);
+      }
+
+      .noticia__abertura {
+        order: 4;
+      }
+
+      .noticia__conteudo {
+        order: 5;
+      }
+
+      .noticia__paginas {
+        order: 6;
+      }
+
+      .noticia__meta {
+        gap: 12px;
+      }
+
+      .noticia__data {
+        font-size: 13px;
+        line-height: 16px;
+        color: var(--aw-tinta-fraca);
+      }
+
+      .noticia__titulo {
+        font-size: 28px;
+        line-height: 1.29;
+      }
+
+      .noticia__abertura,
+      .noticia__conteudo {
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.6;
+        text-align: left;
+        hyphens: manual;
+      }
+
+      .noticia__abertura > * + *,
+      .noticia__conteudo > * + * {
+        margin-top: 24px;
+      }
+
+      /* Citação: caixa #F8F9FA com borda dourada, Sora 16 */
+      .noticia__conteudo blockquote {
+        padding: 16px;
+        border: 1px solid var(--aw-acento);
+        background: var(--aw-fundo-frio);
+        font-size: 16px;
+        line-height: 1.38;
+      }
+
+      /* Compartilhar: rótulo + ícones de 40px em círculo #F5F5F5 */
+      .compartilhar__rotulo {
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 15px;
+        color: var(--aw-acento);
+        text-transform: uppercase;
+      }
+
+      .compartilhar {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 12px;
+        width: auto;
+        min-height: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: none;
+      }
+
+      .compartilhar__link {
+        width: 40px;
+        height: 40px;
+        border-radius: 999px;
+        background: var(--aw-fundo-tag);
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    /* ---- Relacionados: 2 cards empilhados e botão de largura total ------ */
+    .secao--relacionados {
+      > .container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .secao__cabecalho {
+        display: contents;
+      }
+
+      .secao__titulos {
+        order: 1;
+        margin-bottom: 32px;
+      }
+
+      .kicker {
+        font-size: 14px;
+        line-height: 18px;
+      }
+
+      .titulo-secao {
+        font-size: 24px;
+        line-height: 1.25;
+      }
+
+      .blog-grid {
+        order: 2;
+
+        > :nth-child(n + 3) {
+          display: none;
+        }
+      }
+
+      .btn {
+        order: 3;
+        width: 100%;
+        min-width: 0;
+        min-height: 48px;
+        margin-top: 32px;
+        font-size: 15px;
+        line-height: 18px;
+      }
+    }
+  }
+}
+
+/* Rótulo "Compartilhar matéria" só existe no mobile */
+.noticia .compartilhar__rotulo {
+  display: none;
+}

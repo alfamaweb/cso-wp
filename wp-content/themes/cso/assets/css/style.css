@@ -1,0 +1,3117 @@
+/*
+ * Componentes autorais globais.
+ *
+ * Carrega depois de style.css (tokens/reset) e de tailwind.css (utilitários),
+ * por dependência declarada em inc/assets.php — nunca por prioridade de hook.
+ *
+ * Regra do projeto: aqui só se usa var(--aw-*). Nenhum hex literal, para que
+ * trocar a identidade do cliente seja editar a seção 1 do style.css da raiz.
+ */
+
+/* ==========================================================================
+   Layout base CSO
+   --------------------------------------------------------------------------
+   Seletores aninhados (sintaxe SCSS / CSS Nesting nativo): funciona direto no
+   navegador (Chrome 120+, Safari 17.2+, Firefox 117+) e compila sem ajuste
+   se o projeto passar a usar Sass. Não usamos concatenação "&__elemento",
+   que só o Sass entende — cada filho é escrito com o nome completo.
+   ========================================================================== */
+/* Container: usamos a classe .container do Tailwind (src/input.css), que a
+   partir de 1200px entrega os 1200px de conteúdo do Figma com 24px de respiro. */
+
+/* ==========================================================================
+   Header (Figma: top-bar 40px + main-header 90px)
+   ========================================================================== */
+.site-header {
+  position: relative;
+  z-index: 50;
+
+  /* ---- top-bar ---------------------------------------------------------- */
+  .topbar {
+    background: var(--aw-primaria);
+    color: var(--aw-fundo);
+
+    .topbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: 40px;
+
+      /* Mobile: índices centralizados; quebram em duas linhas se não couberem */
+      @media (max-width: 767.98px) {
+        justify-content: center;
+        height: auto;
+        min-height: 40px;
+        padding-block: 6px;
+      }
+    }
+
+    .topbar__indices {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+
+      @media (max-width: 767.98px) {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px 16px;
+      }
+    }
+
+    .topbar__indice {
+      font-size: 13px;
+      line-height: 16px;
+      opacity: 0.8;
+      white-space: nowrap;
+    }
+
+    .topbar__valor {
+      font-weight: 600;
+    }
+  }
+
+  /* ---- main-header ------------------------------------------------------ */
+  .header-main {
+    background: var(--aw-fundo);
+    border-bottom: 1px solid var(--aw-linha);
+
+    .header-main__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      height: 89px; /* + 1px de borda = 90px do layout */
+    }
+
+    .header-main__logo {
+      display: block;
+      flex-shrink: 0;
+      width: 120px;
+      height: 63px;
+      color: var(--aw-marca);
+
+      svg,
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .header-main__acoes {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .header-main__toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      color: var(--aw-marca);
+
+      svg {
+        width: 28px;
+        height: 28px;
+      }
+    }
+
+    @media (max-width: 1199.98px) {
+      .header-main__inner {
+        height: 76px;
+      }
+
+      .header-main__logo {
+        width: 100px;
+        height: 52px;
+      }
+
+      .header-main__acoes {
+        display: none;
+      }
+
+      .header-main__toggle {
+        display: grid;
+      }
+    }
+  }
+}
+
+/* ---- Menu principal + dropdown (marcação do wp_nav_menu) ---------------- */
+.nav-principal {
+  .nav-principal__menu {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    > .menu-item {
+      position: relative;
+      line-height: 18px;
+
+      > a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 18px;
+        color: var(--aw-tinta-suave);
+        white-space: nowrap;
+        transition: color var(--aw-transicao);
+
+        &:hover {
+          color: var(--aw-acento);
+        }
+      }
+
+      &.current-menu-item > a,
+      &.current-menu-ancestor > a {
+        color: var(--aw-acento);
+      }
+    }
+
+    /* Chevron do item com submenu (Figma: 4×8, traço 1.5px #00225A) */
+    .menu-item-has-children > a::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      margin-top: -3px;
+      border-right: 1.5px solid var(--aw-marca);
+      border-bottom: 1.5px solid var(--aw-marca);
+      transform: rotate(45deg);
+      transition: transform var(--aw-transicao);
+    }
+
+    /* Ponte invisível para o hover não cair entre o link e o dropdown */
+    .menu-item-has-children::before {
+      content: "";
+      position: absolute;
+      inset: 100% 0 auto;
+      height: 8px;
+    }
+
+    .sub-menu {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      z-index: 20;
+      min-width: 174px;
+      padding: 8px 0;
+      background: var(--aw-fundo);
+      border: 1px solid var(--aw-linha-dropdown);
+      border-radius: 6px;
+      box-shadow: var(--aw-sombra-dropdown);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(4px);
+      transition: opacity var(--aw-transicao), transform var(--aw-transicao), visibility var(--aw-transicao);
+
+      a {
+        display: block;
+        padding: 10px 40px 10px 20px;
+        font-size: 15px;
+        line-height: 18px;
+        color: var(--aw-dropdown-tinta);
+        white-space: nowrap;
+        transition: background var(--aw-transicao), color var(--aw-transicao);
+
+        &:hover {
+          background: var(--aw-fundo-alt);
+          color: var(--aw-acento);
+        }
+      }
+    }
+
+    .menu-item-has-children:is(:hover, :focus-within) {
+      > a::after {
+        transform: rotate(225deg);
+        margin-top: 3px;
+      }
+
+      > .sub-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+/* ---- Redes sociais (header e rodapé) ------------------------------------ */
+.redes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  a {
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    transition: background var(--aw-transicao), color var(--aw-transicao), border-color var(--aw-transicao);
+  }
+
+  svg,
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  &.redes--header a {
+    width: 44px;
+    height: 44px;
+    background: var(--aw-icone-fundo);
+    color: var(--aw-marca);
+
+    &:hover {
+      background: var(--aw-marca);
+      color: var(--aw-fundo);
+    }
+  }
+
+  &.redes--footer {
+    gap: 16px;
+
+    a {
+      width: 40px;
+      height: 40px;
+      background: rgb(255 255 255 / 4%);
+      border: 1px solid rgb(255 255 255 / 26%);
+      color: var(--aw-acento);
+
+      &:hover {
+        background: var(--aw-acento);
+        border-color: var(--aw-acento);
+        color: var(--aw-fundo);
+      }
+    }
+
+    svg,
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+/* ---- Menu mobile (abre por data-aw-menu-toggle, ver app.js) ------------- */
+.menu-mobile {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: var(--aw-fundo);
+
+  &[hidden] {
+    display: none !important;
+  }
+
+  .menu-mobile__topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 76px;
+    padding-inline: var(--aw-gutter);
+    border-bottom: 1px solid var(--aw-linha);
+  }
+
+  .menu-mobile__logo {
+    width: 100px;
+    height: 52px;
+    color: var(--aw-marca);
+
+    svg,
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .menu-mobile__fechar {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    color: var(--aw-marca);
+
+    svg {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  .menu-mobile__nav {
+    padding: 16px var(--aw-gutter);
+  }
+
+  .menu-mobile__menu {
+    > .menu-item {
+      border-bottom: 1px solid var(--aw-linha);
+
+      > a {
+        display: block;
+        padding: 16px 0;
+        font-family: var(--aw-fonte-titulo);
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--aw-primaria);
+      }
+    }
+
+    .sub-menu {
+      padding: 0 0 12px 16px;
+
+      a {
+        display: block;
+        padding: 8px 0;
+        font-size: 15px;
+        color: var(--aw-dropdown-tinta);
+      }
+    }
+  }
+
+  .menu-mobile__rodape {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: auto;
+    padding: 24px var(--aw-gutter) 32px;
+  }
+}
+
+body.aw-menu-aberto {
+  overflow: hidden;
+}
+
+/* ---- Tipografia de seção, compartilhada entre páginas ------------------- */
+.kicker {
+  font-family: var(--aw-fonte-titulo);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  color: var(--aw-acento);
+  text-transform: uppercase;
+}
+
+.titulo-secao {
+  font-family: var(--aw-fonte-titulo);
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.5rem); /* 28 → 40px */
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--aw-primaria);
+  text-wrap: balance;
+
+  &.titulo-secao--claro {
+    color: var(--aw-fundo);
+  }
+}
+
+.link-seta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 17px;
+  color: var(--aw-primaria);
+  transition: color var(--aw-transicao), gap var(--aw-transicao);
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  &:hover {
+    gap: 12px;
+    color: var(--aw-acento);
+  }
+}
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero-interna {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 280px;
+  overflow: hidden;
+  background: var(--aw-primaria);
+}
+
+@media (min-width: 992px) {
+  .hero-interna {
+    min-height: 460px;
+  }
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-media img,
+.hero-media .aw-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(31 41 51 / 82%), rgb(31 41 51 / 25%));
+}
+
+.hero-conteudo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding-block: 2.5rem;
+  color: #fff;
+}
+
+.hero-eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.hero-titulo {
+  margin-top: 0.35em;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 700;
+}
+
+.hero-texto {
+  margin-top: 1rem;
+  max-width: 52ch;
+  opacity: 0.9;
+}
+
+.hero-img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .hero-img {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+.hero-home .swiper-slide {
+  position: relative;
+}
+
+.hero-home .hero-content {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding-block: 2.5rem;
+  color: #fff;
+  background: linear-gradient(to top, rgb(31 41 51 / 85%), transparent);
+}
+
+/* ==========================================================================
+   Botões
+   --------------------------------------------------------------------------
+   Figma: altura 44px, raio 4px, Instrument Sans 600 16/20.
+   .btn--primario  → fundo dourado (#8B6914), texto branco
+   .btn--contorno  → borda dourada 1.2px, texto dourado
+   ========================================================================== */
+.btn,
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 22px;
+  border-radius: var(--aw-raio-sm);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+  white-space: nowrap;
+  transition: background var(--aw-transicao), color var(--aw-transicao), border-color var(--aw-transicao), box-shadow var(--aw-transicao);
+
+  .btn__icone {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+}
+
+.btn {
+  background: var(--aw-acento);
+  color: var(--aw-fundo);
+  border: 1px solid var(--aw-acento);
+
+  &:hover:not(:disabled) {
+    background: var(--aw-acento-escuro);
+    border-color: var(--aw-acento-escuro);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &.btn--primario {
+    border: 0;
+  }
+
+  &.btn--contorno {
+    background: transparent;
+    color: var(--aw-acento);
+    border: 1.2px solid var(--aw-acento);
+
+    &:hover {
+      background: var(--aw-acento);
+      color: var(--aw-fundo);
+    }
+  }
+
+  &.btn--lg {
+    min-width: 220px;
+  }
+
+  &.btn--portal {
+    min-width: 200px;
+  }
+
+  &.btn--claro {
+    background: var(--aw-fundo);
+    color: var(--aw-primaria);
+    border-color: var(--aw-fundo);
+
+    &:hover:not(:disabled) {
+      background: var(--aw-fundo-alt);
+      border-color: var(--aw-fundo-alt);
+    }
+  }
+}
+
+.btn-outline {
+  border: 1px solid var(--aw-linha);
+  color: var(--aw-tinta);
+
+  &:hover {
+    border-color: var(--aw-tinta);
+  }
+}
+
+.btn-texto {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--aw-acento);
+  font-weight: 600;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+/* ==========================================================================
+   Cards
+   ========================================================================== */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--aw-fundo);
+  border: 1px solid var(--aw-linha);
+  border-radius: var(--aw-raio);
+  transition: box-shadow var(--aw-transicao), transform var(--aw-transicao);
+}
+
+.card:hover {
+  box-shadow: var(--aw-sombra);
+}
+
+.card-thumb {
+  display: block;
+  aspect-ratio: 3 / 2;
+  background: var(--aw-fundo-alt);
+}
+
+.card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.25rem;
+}
+
+.card-titulo {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.card-titulo a:hover {
+  color: var(--aw-acento);
+}
+
+.card-local,
+.card-resumo {
+  color: var(--aw-tinta-suave);
+  font-size: 0.9375rem;
+}
+
+.card-resumo {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.card-difs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.card-difs li {
+  padding: 0.15rem 0.5rem;
+  background: var(--aw-fundo-alt);
+  border-radius: var(--aw-raio-sm);
+  font-size: 0.8125rem;
+  color: var(--aw-tinta-suave);
+}
+
+.card-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--aw-linha);
+}
+
+.card-preco span {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--aw-tinta-fraca);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.card-preco strong {
+  font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   Selos, meta e utilitários de conteúdo
+   ========================================================================== */
+.aw-badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--aw-raio-sm);
+  background: var(--aw-fundo-alt);
+  color: var(--aw-tinta-suave);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.aw-badge--esgotado {
+  background: var(--aw-acento);
+  color: #fff;
+}
+
+.aw-meta {
+  color: var(--aw-tinta-fraca);
+  font-size: 0.875rem;
+}
+
+.aw-meta > * + * {
+  margin-left: 0.4rem;
+}
+
+.aw-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  color: var(--aw-tinta-fraca);
+}
+
+.aw-breadcrumb a:hover {
+  color: var(--aw-acento);
+}
+
+.aw-breadcrumb--claro,
+.aw-breadcrumb--claro a {
+  color: rgb(255 255 255 / 80%);
+}
+
+.aw-vazio {
+  grid-column: 1 / -1;
+  padding: 2rem 0;
+  color: var(--aw-tinta-suave);
+  text-align: center;
+}
+
+.aw-placeholder {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: repeating-linear-gradient(45deg, var(--aw-fundo-alt), var(--aw-fundo-alt) 10px, var(--aw-fundo) 10px, var(--aw-fundo) 20px);
+  color: var(--aw-tinta-fraca);
+  font-size: 0.8125rem;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Filtro, skeleton e paginação
+   ========================================================================== */
+.aw-filtro {
+  padding: 1.25rem;
+  background: var(--aw-fundo-alt);
+  border-radius: var(--aw-raio);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--aw-tinta-suave);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  background: var(--aw-fundo);
+  border: 1px solid var(--aw-linha);
+  border-radius: var(--aw-raio-sm);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--aw-tinta-fraca);
+}
+
+.form-group select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.aw-skeleton {
+  height: 320px;
+  border-radius: var(--aw-raio);
+  background: linear-gradient(90deg, var(--aw-fundo-alt) 25%, var(--aw-linha) 37%, var(--aw-fundo-alt) 63%);
+  background-size: 400% 100%;
+  animation: aw-shimmer 1.3s ease-in-out infinite;
+}
+
+@keyframes aw-shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+.aw-paginacao {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.aw-pg {
+  min-width: 40px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--aw-linha);
+  border-radius: var(--aw-raio-sm);
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+  transition: border-color var(--aw-transicao), background var(--aw-transicao);
+}
+
+.aw-pg:hover:not(:disabled) {
+  border-color: var(--aw-tinta);
+}
+
+.aw-pg:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.aw-pg.is-ativa {
+  background: var(--aw-primaria);
+  border-color: var(--aw-primaria);
+  color: #fff;
+}
+
+.aw-pg-elipse {
+  padding-inline: 0.25rem;
+  color: var(--aw-tinta-fraca);
+}
+
+/* ==========================================================================
+   Formulário
+   ========================================================================== */
+.aw-form {
+  padding: 1.5rem;
+  background: var(--aw-fundo);
+  border: 1px solid var(--aw-linha);
+  border-radius: var(--aw-raio);
+}
+
+.aw-form-titulo {
+  margin-bottom: 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.aw-form-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .aw-form:not(.aw-form--compacto) .aw-form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-group--full {
+  grid-column: 1 / -1;
+}
+
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.form-check input {
+  width: auto;
+  margin-top: 0.3rem;
+}
+
+.form-check label {
+  margin: 0;
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: var(--aw-tinta-suave);
+}
+
+.form-check a {
+  color: var(--aw-acento);
+  text-decoration: underline;
+}
+
+.aw-form-status {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--aw-raio-sm);
+  font-size: 0.9375rem;
+}
+
+.aw-form-status.is-success {
+  background: color-mix(in srgb, var(--aw-sucesso) 12%, transparent);
+  color: var(--aw-sucesso);
+}
+
+.aw-form-status.is-error {
+  background: color-mix(in srgb, var(--aw-erro) 12%, transparent);
+  color: var(--aw-erro);
+}
+
+.aw-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 999px;
+  animation: aw-girar 700ms linear infinite;
+}
+
+.aw-spinner[hidden] {
+  display: none;
+}
+
+@keyframes aw-girar {
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   Toast (fluxo de formulário sem JS)
+   ========================================================================== */
+.aw-toast {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 200;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  max-width: 22rem;
+  padding: 1rem 1.15rem;
+  background: var(--aw-fundo);
+  border: 1px solid var(--aw-linha);
+  border-left: 4px solid var(--aw-tinta-fraca);
+  border-radius: var(--aw-raio);
+  box-shadow: var(--aw-sombra);
+}
+
+.aw-toast--success { border-left-color: var(--aw-sucesso); }
+.aw-toast--warning { border-left-color: var(--aw-atencao); }
+.aw-toast--error   { border-left-color: var(--aw-erro); }
+
+.aw-toast-corpo p {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--aw-tinta-suave);
+}
+
+.aw-toast-fechar {
+  margin-left: auto;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--aw-tinta-fraca);
+}
+
+/* ==========================================================================
+   WhatsApp flutuante (Figma: 56×56, #25D366, 32px da borda direita)
+   ========================================================================== */
+.aw-whatsapp {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  z-index: 150;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: var(--aw-whatsapp);
+  color: var(--aw-fundo);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 20%);
+  transition: transform var(--aw-transicao);
+
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 767.98px) {
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
+/* Toast e botão não se sobrepõem. */
+.aw-toast ~ .aw-whatsapp,
+body:has(.aw-toast) .aw-whatsapp {
+  bottom: 6.5rem;
+}
+/* ==========================================================================
+   Blocos de conteúdo reutilizados
+   ========================================================================== */
+.section-cta {
+  padding-block: 3rem;
+  background: var(--aw-primaria);
+  color: #fff;
+}
+
+.cta-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.aw-diferenciais {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+.aw-diferenciais li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem;
+  background: var(--aw-fundo-alt);
+  border-radius: var(--aw-raio-sm);
+  font-size: 0.9375rem;
+}
+
+.aw-ficha {
+  padding: 1.5rem;
+  background: var(--aw-fundo-alt);
+  border-radius: var(--aw-raio);
+}
+
+.aw-preco {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.aw-galeria {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+.aw-galeria img {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--aw-raio-sm);
+}
+
+.aw-video-capa {
+  position: relative;
+  display: block;
+  border-radius: var(--aw-raio);
+  overflow: hidden;
+}
+
+.aw-video-capa img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.aw-video-play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgb(31 41 51 / 35%);
+}
+
+.aw-video-play::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 14px 0 14px 24px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.aw-resultados li + li {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--aw-linha);
+}
+
+.aw-resultados h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.aw-resultados a:hover h2 {
+  color: var(--aw-acento);
+}
+
+.aw-resultados p {
+  margin-top: 0.25rem;
+  color: var(--aw-tinta-suave);
+  font-size: 0.9375rem;
+}
+
+/* ==========================================================================
+   Rodapé (Figma: fundo #1E2530, padding 64/200/32, gap 40)
+   ========================================================================== */
+.site-footer {
+  padding: 64px 0 32px;
+  background: var(--aw-primaria-clara);
+  color: rgb(255 255 255 / 85%);
+
+  .site-footer__main {
+    display: grid;
+    grid-template-columns: 383fr 181fr 165fr 279fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .site-footer__marca {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .site-footer__logo {
+    display: block;
+    width: 176px;
+    height: 85px;
+    color: var(--aw-fundo);
+
+    svg,
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .site-footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .site-footer__titulo {
+    font-family: var(--aw-fonte);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+    color: var(--aw-acento);
+    text-transform: uppercase;
+  }
+
+  .site-footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    li {
+      line-height: 17px;
+    }
+
+    a {
+      font-size: 14px;
+      line-height: 17px;
+      color: rgb(255 255 255 / 85%);
+      transition: color var(--aw-transicao);
+
+      &:hover {
+        color: var(--aw-acento);
+      }
+    }
+  }
+
+  .site-footer__contatos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .site-footer__contato {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .site-footer__rotulo {
+    font-family: var(--aw-fonte);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    color: var(--aw-cinza-400);
+    text-transform: uppercase;
+  }
+
+  .site-footer__texto {
+    font-size: 14px;
+    font-style: normal;
+    line-height: 1.5;
+    color: rgb(255 255 255 / 85%);
+
+    a:hover {
+      color: var(--aw-acento);
+    }
+  }
+
+  .site-footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid rgb(255 255 255 / 12%);
+  }
+
+  .site-footer__copy {
+    font-size: 14px;
+    line-height: 17px;
+    color: rgb(255 255 255 / 50%);
+
+    a {
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+
+      &:hover {
+        color: var(--aw-fundo);
+      }
+    }
+  }
+
+  .site-footer__assinatura {
+    display: block;
+    flex-shrink: 0;
+    color: var(--aw-fundo);
+
+    svg {
+      width: auto;
+      height: 16px;
+    }
+  }
+
+  /* ---- Responsivo ------------------------------------------------------- */
+  @media (max-width: 1199.98px) {
+    .site-footer__main {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px 32px;
+    }
+
+    .site-footer__marca {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    padding-top: 48px;
+
+    .site-footer__main {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .site-footer__col--contato {
+      grid-column: 1 / -1;
+    }
+
+    .site-footer__bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+}
+
+/* ==========================================================================
+   Páginas CSO (home, quem somos…) — estrutura comum das seções
+   ========================================================================== */
+.pagina-cso {
+  .secao {
+    padding-block: 72px;
+
+    @media (max-width: 991.98px) {
+      padding-block: 56px;
+    }
+  }
+
+  .secao__cabecalho {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 48px;
+
+    &.secao__cabecalho--linha {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    &.secao__cabecalho--centro {
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+
+    @media (max-width: 767.98px) {
+      margin-bottom: 32px;
+    }
+  }
+
+  .secao__titulos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .secao__acoes {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+  }
+}
+
+/* ==========================================================================
+   Hero (home 600px com vídeo; internas 450px com imagem — .hero--interna)
+   ========================================================================== */
+.pagina-cso .hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 600px;
+  overflow: hidden;
+  background: var(--aw-primaria);
+  isolation: isolate;
+
+  /* Overlay do layout: linear-gradient(0deg, rgba(13,20,36,.55) …) */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: color-mix(in srgb, var(--aw-primaria) 55%, transparent);
+  }
+
+  .hero__midia {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+  }
+
+  .hero__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero__midia picture {
+    display: contents;
+  }
+
+  /* Vídeo por cima da capa; aparece com fade quando começa a tocar */
+  .hero__player {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 600ms ease;
+    pointer-events: none;
+
+    &.is-tocando {
+      opacity: 1;
+    }
+
+    /* Sem nenhum controle nativo (botão de play do iOS/Safari incluso) */
+    &::-webkit-media-controls,
+    &::-webkit-media-controls-start-playback-button,
+    &::-webkit-media-controls-panel {
+      display: none !important;
+      -webkit-appearance: none;
+    }
+  }
+
+  .hero__inner {
+    padding-block: 64px;
+  }
+
+  .hero__conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 809px;
+  }
+
+  .hero__textos {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .hero__titulo {
+    font-family: var(--aw-fonte-titulo);
+    font-size: clamp(2.25rem, 1.4rem + 3.6vw, 3.5rem); /* 36 → 56px */
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--aw-fundo);
+  }
+
+  .hero__subtitulo {
+    max-width: 600px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--aw-fundo);
+    opacity: 0.9;
+  }
+
+  /* Páginas internas (Figma "quem somos"): 450px, imagem em vez de vídeo */
+  &.hero--interna {
+    min-height: 450px;
+  }
+
+  .hero__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  @media (max-width: 767.98px) {
+    min-height: 520px;
+
+    .hero__conteudo {
+      gap: 32px;
+    }
+
+    .hero__subtitulo br {
+      display: none;
+    }
+  }
+}
+
+/* ==========================================================================
+   Bloco "A empresa" + indicadores (fundo #F8F9FA, gap 72 entre blocos)
+   ========================================================================== */
+.pagina-cso .secao--empresa {
+  background: var(--aw-fundo-frio);
+
+  /* Blocos empilhados com 72px (home: empresa → indicadores; quem somos: o inverso) */
+  > .container {
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+
+    @media (max-width: 991.98px) {
+      gap: 56px;
+    }
+  }
+
+  .empresa {
+    display: grid;
+    grid-template-columns: minmax(0, 589fr) minmax(0, 587fr);
+    gap: 24px;
+    align-items: center;
+
+    @media (max-width: 991.98px) {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
+  .empresa__texto {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    /* O selo avança 40px para fora da imagem (left: -40px), por cima do gap de
+       24px: o respiro à direita mantém o texto livre dele. 40px em 1200px de
+       conteúdo, ~33px em 992px e até 56px em telas largas. */
+    @media (min-width: 992px) {
+      padding-right: clamp(32px, 3.34vw, 56px);
+    }
+  }
+
+  .empresa__titulos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .titulo-secao--empresa {
+    line-height: 1.15;
+  }
+
+  .empresa__descricao {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--aw-tinta-suave);
+
+    p + p {
+      margin-top: 1em;
+    }
+  }
+
+  .empresa__divisor {
+    width: 100%;
+    height: 0;
+    margin: 0;
+    border: 0;
+    border-top: 1px solid var(--aw-linha);
+  }
+
+  /* ---- Imagem com selo "+35" sobreposto (left -40, bottom 40) ----------- */
+  .empresa__visual {
+    position: relative;
+
+    @media (max-width: 991.98px) {
+      margin-left: 24px;
+    }
+  }
+
+  .empresa__imagem {
+    width: 100%;
+    aspect-ratio: 587 / 500;
+    object-fit: cover;
+    border-radius: var(--aw-raio);
+    background: var(--aw-linha);
+  }
+
+  .empresa__selo {
+    position: absolute;
+    bottom: 40px;
+    left: -40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 36px;
+    background: var(--aw-primaria);
+    border: 1px solid var(--aw-acento);
+    border-radius: var(--aw-raio-sm);
+    box-shadow: 0 8px 16px rgb(0 0 0 / 20%);
+    text-align: center;
+
+    @media (max-width: 991.98px) {
+      left: -24px;
+      bottom: 24px;
+      padding: 16px 24px;
+    }
+  }
+
+  .empresa__selo-numero {
+    font-family: var(--aw-fonte-titulo);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    color: var(--aw-fundo);
+  }
+
+  .empresa__selo-rotulo {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 13px;
+    color: var(--aw-acento);
+    text-transform: uppercase;
+  }
+
+  /* ---- Indicadores (4 cards 282×155, raio 16, gradiente por card) ------- */
+  .indicadores {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .indicadores__cabecalho {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .titulo-secao--indicadores {
+    font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); /* 24 → 32px */
+    line-height: 1.25;
+    color: var(--aw-tinta-titulo);
+  }
+
+  .indicadores__lista {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+
+    @media (max-width: 991.98px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (max-width: 479.98px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .indicador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 155px;
+    padding: 36px 24px;
+    overflow: hidden;
+    border-radius: var(--aw-raio-lg);
+    background: var(--aw-grad-1);
+    text-align: center;
+
+    &:nth-child(4n + 2) {
+      background: var(--aw-grad-2);
+    }
+
+    &:nth-child(4n + 3) {
+      background: var(--aw-grad-3);
+    }
+
+    &:nth-child(4n + 4) {
+      background: var(--aw-grad-4);
+    }
+  }
+
+  .indicador__numero {
+    font-family: var(--aw-fonte-titulo);
+    font-size: clamp(2.25rem, 1.8rem + 1.6vw, 3rem); /* 36 → 48px */
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--aw-fundo);
+  }
+
+  .indicador__rotulo {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 1.5px;
+    color: var(--aw-cinza-300);
+    text-transform: uppercase;
+  }
+}
+
+/* ==========================================================================
+   Instagram (fundo branco, 4 posts 282×282) — template-parts/cso-instagram.php
+   ========================================================================== */
+.pagina-cso .secao--instagram {
+  background: var(--aw-fundo);
+
+  .instagram__handle {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    color: var(--aw-acento);
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+
+  .instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+
+    @media (max-width: 991.98px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (max-width: 479.98px) {
+      gap: 12px;
+    }
+  }
+
+  /* Post: raio 8, borda #E5E7EB, overlay 0 → 65% preto na metade inferior */
+  .insta-post {
+    position: relative;
+    display: block;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: 1px solid var(--aw-linha);
+    border-radius: var(--aw-raio);
+    background: var(--aw-fundo-tag);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 600ms ease;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, transparent 50%, rgb(0 0 0 / 65%) 100%);
+      pointer-events: none;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+
+    .insta-post__info {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      left: 16px;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .insta-post__stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 16px;
+      color: var(--aw-fundo);
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  .secao__acoes--instagram .btn {
+    min-width: 220px;
+  }
+}
+
+
+/* ==========================================================================
+   Setas de carrossel (Figma: 48×48, brancas, borda 20% e sombra suave)
+   ========================================================================== */
+.pagina-cso .setas {
+  display: flex;
+  gap: 12px;
+
+  .setas__btn {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    background: var(--aw-fundo);
+    border: 1px solid rgb(255 255 255 / 20%);
+    box-shadow: 0 6px 16px -6px rgb(0 0 0 / 15%);
+    color: var(--aw-marca);
+    transition: background var(--aw-transicao), color var(--aw-transicao), opacity var(--aw-transicao);
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover:not(.swiper-button-disabled) {
+      background: var(--aw-acento);
+      color: var(--aw-fundo);
+    }
+
+    /* Sem para onde ir (ex.: 3 depoimentos em 3 colunas): mantém o visual
+       do layout, só tira o cursor de clique. */
+    &.swiper-button-disabled {
+      cursor: default;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .pagina-cso .secao__acoes .btn {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* ==========================================================================
+   Cards de post do blog — template-parts/card-post.php (home, blog, arquivos)
+   ========================================================================== */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+
+  @media (max-width: 991.98px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 575.98px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card: padding 24, gap 20, raio 16, borda + sombra 0 4 20 / 10% */
+.post-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 24px;
+  background: var(--aw-fundo);
+  border: 1px solid var(--aw-linha);
+  border-radius: var(--aw-raio-lg);
+  box-shadow: var(--aw-sombra);
+
+  .post-card__midia {
+    display: block;
+    width: 100%;
+    aspect-ratio: 336 / 220;
+    overflow: hidden;
+    border-radius: var(--aw-raio);
+    background: var(--aw-linha);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 600ms ease;
+    }
+  }
+
+  &:hover .post-card__midia img {
+    transform: scale(1.04);
+  }
+
+  /* Categoria + data (a data só aparece no mobile do blog e relacionados) */
+  .post-card__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .post-card__data {
+    display: none;
+    font-size: 12px;
+    line-height: 15px;
+    color: var(--aw-tinta-fraca);
+    white-space: nowrap;
+  }
+
+  .post-card__categoria {
+    padding: 4px 10px;
+    border-radius: var(--aw-raio-sm);
+    background: var(--aw-fundo-tag);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 13px;
+    color: var(--aw-acento);
+    text-transform: uppercase;
+  }
+
+  .post-card__titulo {
+    font-family: var(--aw-fonte-titulo);
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--aw-primaria);
+
+    a:hover {
+      color: var(--aw-acento);
+    }
+  }
+
+  .post-card__resumo {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--aw-tinta-fraca);
+  }
+
+  .link-seta {
+    margin-top: auto;
+  }
+}
+
+/* ==========================================================================
+   Grade e card de empreendimento (Figma: 384×633, raio 8, sombra 0 4 20/10%)
+   Usados na home, na listagem (page-empreendimentos.php) e nas respostas
+   AJAX — marcação em template-parts/card-empreendimento.php.
+   ========================================================================== */
+.pagina-cso {
+  .emp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+
+    .emp-grid__vazio {
+      grid-column: 1 / -1;
+      padding: 48px 0;
+      color: var(--aw-tinta-fraca);
+      text-align: center;
+    }
+
+    @media (max-width: 991.98px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (max-width: 575.98px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ---- Card (Figma: 384×633, raio 8, sombra 0 4 20 / 10%) ---------------- */
+  .emp-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow: hidden;
+    background: var(--aw-fundo);
+    border-radius: var(--aw-raio);
+    box-shadow: var(--aw-sombra);
+
+    &[hidden] {
+      display: none;
+    }
+
+    .emp-card__midia {
+      position: relative;
+      display: block;
+      aspect-ratio: 384 / 460;
+      overflow: hidden;
+      background: var(--aw-linha);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 600ms ease;
+      }
+    }
+
+    &:hover .emp-card__midia img {
+      transform: scale(1.04);
+    }
+
+    /* Selo de status (Figma: padding 6/12, raio 4, Bold 11 caixa-alta) */
+    .emp-card__badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      padding: 6px 12px;
+      border-radius: var(--aw-raio-sm);
+      background: var(--aw-linha);
+      color: var(--aw-tinta-suave);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 13px;
+      text-transform: uppercase;
+
+      &.emp-card__badge--lancamento {
+        background: var(--aw-acento);
+        color: var(--aw-fundo);
+      }
+
+      &.emp-card__badge--esgotado {
+        background: var(--aw-primaria);
+        color: var(--aw-fundo);
+      }
+    }
+
+    .emp-card__corpo {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 0 16px 24px;
+    }
+
+    .emp-card__cabecalho {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .emp-card__titulo {
+      font-family: var(--aw-fonte-titulo);
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 30px;
+      color: var(--aw-primaria);
+
+      a:hover {
+        color: var(--aw-acento);
+      }
+    }
+
+    .emp-card__local {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      color: var(--aw-tinta-fraca);
+      text-transform: uppercase;
+    }
+
+    /* ---- Progresso de vendas (barra 4px, trilho #E5E7EB) ---------------- */
+    .emp-card__vendas {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .emp-card__barra {
+      height: 4px;
+      overflow: hidden;
+      border-radius: 2px;
+      background: var(--aw-linha);
+
+      span {
+        display: block;
+        width: var(--progresso, 0%);
+        height: 100%;
+        border-radius: 2px;
+        background: var(--aw-acento);
+      }
+
+      &.is-completa span {
+        background: var(--aw-primaria);
+      }
+    }
+
+    .emp-card__percentual {
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 13px;
+      color: var(--aw-tinta-suave);
+      text-transform: uppercase;
+    }
+
+    /* ---- "Ver detalhes" (details/summary, sem JS) ----------------------- */
+    .emp-card__detalhes {
+      &[open] .emp-card__chevron {
+        transform: rotate(180deg);
+      }
+
+      &[open] .emp-card__gatilho {
+        border-bottom: 1px solid var(--aw-linha);
+      }
+    }
+
+    .emp-card__gatilho {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      color: var(--aw-primaria);
+      list-style: none;
+      cursor: pointer;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &:hover {
+        color: var(--aw-acento);
+      }
+    }
+
+    .emp-card__chevron {
+      width: 16px;
+      height: 16px;
+      color: var(--aw-marca);
+      transition: transform var(--aw-transicao);
+    }
+
+    .emp-card__painel {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-top: 12px;
+    }
+
+    .emp-card__lista {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      li {
+        position: relative;
+        padding-left: 14px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--aw-tinta-suave);
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0.6em;
+          left: 0;
+          width: 5px;
+          height: 5px;
+          border-radius: 999px;
+          background: var(--aw-acento);
+        }
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+   Filtros e paginação das listagens (blog e empreendimentos)
+   ========================================================================== */
+.pagina-cso {
+  .hero .hero__subtitulo--largo {
+    max-width: 716px;
+  }
+
+  /* ---- Abas de filtro em formulário (radios; Figma: gap 32, traço 2px) - */
+  .abas-filtro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 32px;
+
+    @media (max-width: 575.98px) {
+      flex-wrap: nowrap;
+      gap: 24px;
+      max-width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+  }
+
+  .abas-filtro__item {
+    position: relative;
+    padding-bottom: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+    color: var(--aw-cinza-600);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color var(--aw-transicao);
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: var(--aw-acento);
+      transform: scaleX(0);
+      transition: transform var(--aw-transicao);
+    }
+
+    &:hover {
+      color: var(--aw-primaria);
+    }
+
+    &:has(input:checked) {
+      font-weight: 700;
+      color: var(--aw-primaria);
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    &:has(input:focus-visible) {
+      outline: 2px solid var(--aw-acento);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+  }
+
+  /* ---- Paginação em círculos (Figma: 40×40, 8px entre eles) ----------- */
+  .paginacao-circulos {
+    margin-top: 40px;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  .aw-paginacao {
+    gap: 8px;
+  }
+
+  .aw-pg {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--aw-acento);
+    border-radius: 999px;
+    box-shadow: 0 6px 16px -6px rgb(0 0 0 / 15%);
+    font-family: var(--aw-fonte-titulo);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--aw-acento);
+    transition: background var(--aw-transicao), color var(--aw-transicao);
+
+    &:hover:not(:disabled) {
+      background: color-mix(in srgb, var(--aw-acento) 10%, transparent);
+      border-color: var(--aw-acento);
+    }
+
+    &.is-ativa {
+      background: var(--aw-acento);
+      border-color: var(--aw-acento);
+      color: var(--aw-fundo);
+    }
+  }
+
+  /* O layout mostra só os números (os botões numéricos já cobrem a navegação) */
+  .aw-pg--prev,
+  .aw-pg--next {
+    display: none;
+  }
+
+  .aw-pg-elipse {
+    color: var(--aw-acento);
+  }
+}
+
+/* ==========================================================================
+   Campos de formulário do layout (card do empreendimento e página Contato):
+   rótulo 12px caixa-alta, campo 32px com borda dourada e raio 16, aceite com
+   caixa 20×20 dourada
+   ========================================================================== */
+.pagina-cso {
+  /* Rótulo + campo: 10px entre eles; campo 32px, borda dourada, raio 16 */
+  .campo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    label {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      color: var(--aw-tinta-fraca);
+      text-transform: uppercase;
+    }
+
+    input {
+      width: 100%;
+      height: 32px;
+      padding: 0 16px;
+      background: var(--aw-fundo);
+      border: 1px solid var(--aw-acento);
+      border-radius: var(--aw-raio-lg);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--aw-primaria);
+      transition: box-shadow var(--aw-transicao);
+
+      &::placeholder {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--aw-cinza-400);
+        text-transform: uppercase;
+        opacity: 1;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--aw-acento) 25%, transparent);
+      }
+    }
+  }
+
+  /* Caixa 20×20 com borda dourada de 2px */
+  .aceite {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    input {
+      flex: none;
+      width: 20px;
+      height: 20px;
+      margin: 0;
+      appearance: none;
+      border: 2px solid var(--aw-acento);
+      border-radius: 3px;
+      background: var(--aw-fundo);
+      cursor: pointer;
+
+      &:checked {
+        background: var(--aw-acento) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5 9-10'/%3E%3C/svg%3E") center / 14px no-repeat;
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--aw-acento);
+        outline-offset: 2px;
+      }
+    }
+
+    label {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      color: var(--aw-cinza-400);
+      text-transform: uppercase;
+      cursor: pointer;
+
+      a {
+        color: inherit;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  /* Mensagem: começa com a altura de um campo (32px) e cresce com o texto */
+  .campo textarea {
+    width: 100%;
+    min-height: 32px;
+    padding: 7px 16px;
+    background: var(--aw-fundo);
+    border: 1px solid var(--aw-acento);
+    border-radius: var(--aw-raio-lg);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+    color: var(--aw-primaria);
+    resize: vertical;
+    field-sizing: content;
+    transition: box-shadow var(--aw-transicao);
+
+    &::placeholder {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--aw-cinza-400);
+      text-transform: uppercase;
+      opacity: 1;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--aw-acento) 25%, transparent);
+    }
+  }
+}
+
+/* ==========================================================================
+   Formulário de contato (template-parts/form-contato.php) — card de 1200px,
+   padding 20/16/36, raio 8, sombra; campos em duas colunas
+   ========================================================================== */
+.pagina-cso .form-contato {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 16px 36px;
+  background: var(--aw-fundo);
+  border-radius: var(--aw-raio);
+  box-shadow: var(--aw-sombra);
+
+  .form-contato__titulo {
+    font-family: var(--aw-fonte-titulo);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 25px;
+    color: var(--aw-primaria);
+  }
+
+  .form-contato__grade {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 24px;
+
+    @media (max-width: 767.98px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Botão 200×44, 24px abaixo do aceite */
+  .form-contato__rodape {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin-top: 12px;
+  }
+
+  .form-contato__enviar {
+    min-width: 200px;
+  }
+
+  .aw-form-status {
+    margin-top: 0;
+    font-size: 14px;
+  }
+}
+
+/* ==========================================================================
+   Transição entre páginas
+   1. Nativa (View Transitions entre documentos — Chrome/Edge 126+, Safari
+      18.2+): a página atual some e a nova entra subindo; o cabeçalho fica
+      parado. O opt-in (@view-transition) é um <style> inline no <head>,
+      impresso por aw_transicao_paginas() em inc/assets.php.
+   2. Complemento (script da mesma função): quando a nativa não acontece
+      (Firefox, primeira visita), o <html> recebe .aw-entrada e o <main>
+      entra com o mesmo fade.
+   ========================================================================== */
+.site-header {
+  view-transition-name: cabecalho;
+}
+
+::view-transition-old(root) {
+  animation: aw-pagina-sai 220ms ease-in both;
+}
+
+::view-transition-new(root) {
+  animation: aw-pagina-entra 480ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
+}
+
+::view-transition-group(cabecalho) {
+  animation-duration: 0s;
+}
+
+.aw-entrada #conteudo {
+  animation: aw-pagina-entra 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes aw-pagina-sai {
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes aw-pagina-entra {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  .aw-entrada #conteudo {
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   Mobile — Figma, página "Mobile" (frames de 390px). Vale até 767.98px.
+   --------------------------------------------------------------------------
+   Componentes compartilhados (header, rodapé, seções, hero, cards, abas,
+   paginação, empresa, indicadores e Instagram). Ajustes de cada página ficam
+   no CSS dela, no bloco "Mobile" do fim do arquivo.
+   ========================================================================== */
+@media (max-width: 767.98px) {
+  /* ---- Header: top-bar 29px (padding 8/16) + main-header 74px ----------- */
+  .site-header {
+    .topbar {
+      .topbar__inner {
+        min-height: 29px;
+        padding: 8px 16px;
+      }
+
+      .topbar__indices {
+        flex-wrap: nowrap;
+        gap: 16px;
+      }
+
+      .topbar__indice {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13px;
+        opacity: 1;
+
+        /* Divisor de 12px entre os índices (branco 32%) */
+        & + .topbar__indice::before {
+          content: "";
+          width: 1px;
+          height: 12px;
+          margin-right: 12px;
+          background: rgb(255 255 255 / 32%);
+        }
+      }
+
+      .topbar__valor {
+        font-weight: 500;
+        color: var(--aw-acento);
+      }
+    }
+
+    .header-main {
+      .header-main__inner {
+        height: 73px; /* + 1px de borda = 74px */
+      }
+
+      .header-main__logo {
+        width: 96px;
+        height: 50px;
+      }
+
+      /* Botão 32×32, fundo #F8F9FA, raio 4, ícone 24px; área de toque de 44px */
+      .header-main__toggle {
+        position: relative;
+        width: 32px;
+        height: 32px;
+        border-radius: var(--aw-raio-sm);
+        background: var(--aw-fundo-frio);
+        color: var(--aw-primaria);
+
+        &::after {
+          content: "";
+          position: absolute;
+          inset: -6px;
+        }
+
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+
+  /* ---- Rodapé: tudo centralizado em uma coluna (padding 48/20/32) ------- */
+  .site-footer {
+    padding: 48px 0 32px;
+
+    > .container {
+      padding-inline: 20px;
+    }
+
+    .site-footer__main {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .site-footer__marca {
+      gap: 20px;
+    }
+
+    .site-footer__logo {
+      width: 168px;
+      height: 72px;
+      padding: 6px 14px;
+    }
+
+    .redes.redes--footer {
+      gap: 12px;
+
+      a {
+        width: 36px;
+        height: 36px;
+        background: rgb(255 255 255 / 5%);
+        border-color: rgb(255 255 255 / 32%);
+      }
+
+      svg,
+      img {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    .site-footer__col {
+      align-items: center;
+      gap: 12px;
+    }
+
+    .site-footer__titulo {
+      font-size: 13px;
+      line-height: 16px;
+    }
+
+    .site-footer__links {
+      align-items: center;
+      gap: 12px;
+    }
+
+    .site-footer__col--contato {
+      grid-column: auto;
+      gap: 20px;
+    }
+
+    .site-footer__contatos {
+      align-items: center;
+      gap: 16px;
+    }
+
+    .site-footer__contato {
+      align-items: center;
+      gap: 4px;
+    }
+
+    .site-footer__rotulo {
+      font-size: 11px;
+      line-height: 13px;
+    }
+
+    .site-footer__texto {
+      font-size: 13px;
+      line-height: 18px;
+      text-align: center;
+    }
+
+    .site-footer__bottom {
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .site-footer__copy {
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    .site-footer__assinatura svg {
+      height: 13px;
+    }
+  }
+
+  /* ---- Títulos e seções (padding 48, 32px entre cabeçalho e conteúdo) -- */
+  .kicker {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .titulo-secao {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+
+  .pagina-cso {
+    .secao {
+      padding-block: 48px;
+    }
+
+    .secao__cabecalho {
+      gap: 8px;
+      margin-bottom: 32px;
+
+      &.secao__cabecalho--linha {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+      }
+
+      &.secao__cabecalho--centro {
+        gap: 8px;
+      }
+    }
+
+    .secao__titulos {
+      gap: 8px;
+    }
+
+    .secao__acoes {
+      margin-top: 32px;
+    }
+  }
+
+  /* ---- Hero ------------------------------------------------------------ */
+  .pagina-cso .hero {
+    min-height: 0;
+
+    .hero__inner {
+      padding: 48px 20px;
+    }
+
+    .hero__conteudo {
+      align-items: stretch;
+      gap: 24px;
+      max-width: none;
+    }
+
+    .hero__textos {
+      gap: 20px;
+    }
+
+    .hero__titulo {
+      font-size: 34px;
+      line-height: 1.15;
+    }
+
+    .hero__subtitulo {
+      font-size: 15px;
+      line-height: 1.55;
+      opacity: 1;
+    }
+
+    .hero__ctas .btn {
+      width: 100%;
+      min-width: 0;
+      min-height: 50px;
+      padding: 14px 24px;
+      font-size: 15px;
+      line-height: 18px;
+    }
+
+    /* Internas: 388px, conteúdo centralizado na altura */
+    &.hero--interna {
+      min-height: 388px;
+
+      .hero__inner {
+        padding-block: 56px;
+      }
+
+      .hero__textos {
+        gap: 16px;
+      }
+
+      .hero__titulo {
+        font-size: 32px;
+        line-height: 1.16;
+      }
+
+      .hero__subtitulo {
+        font-size: 14px;
+        line-height: 1.55;
+      }
+    }
+  }
+
+  /* ---- Botões de seção ------------------------------------------------- */
+  .pagina-cso .secao__acoes .btn {
+    width: auto;
+    min-width: 0;
+    padding-inline: 16px;
+  }
+
+  /* ---- Abas de status (Figma: gap 16, 14px, traço de 32×2 centralizado).
+     As abas da home (.abas) recebem o mesmo ajuste em home.css. --------- */
+  .pagina-cso .abas-filtro {
+    flex-wrap: nowrap;
+    gap: 16px;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .pagina-cso .abas-filtro__item {
+    padding-bottom: 8px;
+    font-size: 14px;
+    line-height: 17px;
+    color: var(--aw-tinta-fraca);
+    white-space: nowrap;
+
+    &::after {
+      right: auto;
+      left: 50%;
+      width: 32px;
+      transform: translateX(-50%) scaleX(0);
+    }
+
+    &:has(input:checked) {
+      color: var(--aw-primaria);
+
+      &::after {
+        transform: translateX(-50%) scaleX(1);
+      }
+    }
+  }
+
+  /* ---- Paginação em círculos de 36px ----------------------------------- */
+  .pagina-cso {
+    .paginacao-circulos {
+      margin-top: 32px;
+    }
+
+    .aw-pg {
+      width: 36px;
+      min-width: 36px;
+      height: 36px;
+      font-size: 14px;
+
+      &.is-ativa {
+        font-weight: 700;
+      }
+    }
+  }
+
+  /* ---- Card de empreendimento (342×633, imagem 460) -------------------- */
+  .pagina-cso {
+    .emp-grid {
+      gap: 20px;
+    }
+
+    .emp-card .emp-card__midia {
+      aspect-ratio: 342 / 460;
+    }
+  }
+
+  /* ---- Card de post (lista do blog e relacionados: 350×423) ------------ */
+  .post-card {
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
+
+    .post-card__midia {
+      aspect-ratio: 318 / 180;
+    }
+
+    .post-card__titulo {
+      font-size: 18px;
+      line-height: 1.28;
+    }
+
+    .post-card__resumo {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .link-seta {
+      gap: 6px;
+    }
+
+    .post-card__data {
+      display: block;
+    }
+  }
+
+  .blog-grid {
+    gap: 20px;
+  }
+
+  /* ---- Bloco "A empresa" (imagem 280px com selo dentro, sem divisor) --- */
+  .pagina-cso .secao--empresa {
+    .empresa {
+      gap: 32px;
+    }
+
+    .empresa__texto {
+      gap: 24px;
+    }
+
+    .empresa__titulos {
+      gap: 12px;
+    }
+
+    /* As quebras de linha manuais do título são do desktop */
+    .titulo-secao--empresa br {
+      display: none;
+    }
+
+    .empresa__descricao {
+      font-size: 15px;
+    }
+
+    .empresa__divisor {
+      display: none;
+    }
+
+    .empresa__visual {
+      margin-left: 0;
+    }
+
+    .empresa__imagem {
+      aspect-ratio: 342 / 280;
+    }
+
+    .empresa__selo {
+      bottom: 16px;
+      left: 16px;
+      padding: 12px 20px;
+    }
+
+    .empresa__selo-numero {
+      font-size: 24px;
+      line-height: 30px;
+    }
+
+    .empresa__selo-rotulo {
+      font-size: 10px;
+      line-height: 12px;
+    }
+
+    /* Indicadores: cards 109px, padding 24/16, raio 12 */
+    .indicadores {
+      gap: 24px;
+    }
+
+    .indicadores__cabecalho {
+      gap: 4px;
+    }
+
+    .titulo-secao--indicadores {
+      font-size: 20px;
+      line-height: 25px;
+    }
+
+    .indicadores__lista {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .indicador {
+      min-height: 109px;
+      padding: 24px 16px;
+      border-radius: 12px;
+    }
+
+    .indicador__numero {
+      font-size: 32px;
+      line-height: 40px;
+    }
+
+    .indicador__rotulo {
+      font-size: 11px;
+      line-height: 13px;
+      letter-spacing: 0;
+    }
+  }
+
+  /* ---- Instagram (2×2 de 167px; a home usa uma coluna) ----------------- */
+  .pagina-cso .secao--instagram {
+    .titulo-secao {
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .instagram__handle {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    .instagram-grid {
+      gap: 16px;
+    }
+
+    .insta-post {
+      .insta-post__info {
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+        gap: 12px;
+      }
+
+      .insta-post__stat {
+        gap: 4px;
+        font-size: 12px;
+        line-height: 15px;
+
+        svg {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+
+    .secao__acoes--instagram .btn {
+      width: 100%;
+      min-height: 50px;
+      font-size: 14px;
+      line-height: 17px;
+
+      .btn__icone {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  /* ---- Campos de formulário (rótulo 11, campo de raio 20, aceite 11) --- */
+  .pagina-cso {
+    .campo {
+      gap: 6px;
+
+      label {
+        font-size: 11px;
+        line-height: 13px;
+      }
+
+      input {
+        height: 40px;
+        border-radius: 20px;
+
+        &::placeholder {
+          font-size: 13px;
+          font-weight: 400;
+          color: var(--aw-tinta-fraca);
+        }
+      }
+
+      textarea {
+        min-height: 40px;
+        padding-block: 11px;
+        border-radius: 20px;
+
+        &::placeholder {
+          font-size: 13px;
+          font-weight: 400;
+          color: var(--aw-tinta-fraca);
+        }
+      }
+    }
+
+    .aceite {
+      gap: 8px;
+
+      label {
+        font-size: 11px;
+        line-height: 13px;
+        color: var(--aw-tinta-fraca);
+      }
+    }
+  }
+
+  /* ---- Bolinhas de paginação (Swiper e carrosséis por rolagem) --------- */
+  .pagina-cso .pontos {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    .swiper-pagination-bullet,
+    .pontos__item {
+      width: 8px;
+      height: 8px;
+      margin: 0 !important;
+      padding: 0;
+      border-radius: 999px;
+      background: var(--aw-cinza-400);
+      opacity: 1;
+      cursor: pointer;
+
+      &.swiper-pagination-bullet-active,
+      &.is-ativo {
+        background: var(--aw-acento);
+      }
+    }
+  }
+}
+
+/* Bolinhas e setas de baixo só existem no mobile (no desktop o layout usa as
+   setas do cabeçalho ou a grade) */
+@media (min-width: 768px) {
+  .pagina-cso .pontos--mobile,
+  .pagina-cso .setas--mobile {
+    display: none;
+  }
+}
+
+/* Páginas do mobile (iniciarPaginasMobile): o [hidden] precisa vencer o
+   display dos slides e das setas */
+.pagina-cso {
+  [data-aw-paginas] [hidden],
+  .setas[hidden] {
+    display: none !important;
+  }
+
+  .setas .setas__btn:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+}
+
+@media (max-width: 767.98px) {
+  /* Lista empilhada no lugar do carrossel (Swiper só a partir de 768px) */
+  .pagina-cso [data-aw-paginas] .swiper-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .pagina-cso .setas--mobile {
+    margin-top: 24px;
+  }
+}

@@ -1,0 +1,426 @@
+/*
+ * Home — estilos exclusivos da página inicial (page-home.php).
+ *
+ * Hero, bloco "A empresa", indicadores, setas e Instagram são compartilhados
+ * com as páginas internas e ficam em assets/css/style.css (.pagina-cso).
+ *
+ * Medidas do frame "home" do Figma (1600px de largura, conteúdo em 1200px com
+ * 200px de respiro lateral). Seletores aninhados (sintaxe SCSS / CSS Nesting
+ * nativo), sem concatenação "&__": cada elemento tem o nome completo.
+ * Só tokens var(--aw-*) de style.css — nenhum hex literal.
+ */
+
+/* ==========================================================================
+   1. Empreendimentos (fundo areia #F7F5F2)
+   ========================================================================== */
+.home .secao--empreendimentos {
+  background: var(--aw-fundo-alt);
+
+  .secao__cabecalho--linha {
+    align-items: flex-end;
+  }
+
+  .secao__titulos {
+    gap: 8px;
+  }
+
+  .titulo-secao--emp {
+    max-width: 380px;
+    line-height: 1.25;
+  }
+
+  /* ---- Abas de filtro (Figma: gap 32, indicador 2px dourado) ------------ */
+  .abas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 32px;
+
+    @media (max-width: 575.98px) {
+      flex-wrap: nowrap;
+      gap: 24px;
+      max-width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .abas__item {
+      position: relative;
+      padding: 0 0 10px;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 18px;
+      color: var(--aw-cinza-600);
+      transition: color var(--aw-transicao);
+
+      &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        background: var(--aw-acento);
+        transform: scaleX(0);
+        transition: transform var(--aw-transicao);
+      }
+
+      &:hover {
+        color: var(--aw-primaria);
+      }
+
+      &.is-ativa {
+        font-weight: 700;
+        color: var(--aw-primaria);
+        white-space: nowrap;
+
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+
+  .secao__acoes .btn {
+    min-width: 286px;
+  }
+}
+
+/* ==========================================================================
+   2. Depoimentos (fundo #1E2530, carrossel Swiper)
+   ========================================================================== */
+.home .secao--depoimentos {
+  background: var(--aw-primaria-clara);
+
+  .titulo-secao--claro {
+    line-height: 1.2;
+  }
+
+  .depoimentos {
+    overflow: hidden;
+
+    .swiper-slide {
+      height: auto;
+    }
+  }
+
+  /* Card: 384×367, padding 32, raio 8, borda #E5E7EB, conteúdo space-between */
+  .depoimento {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+    height: 100%;
+    min-height: 367px;
+    padding: 32px;
+    background: var(--aw-fundo);
+    border: 1px solid var(--aw-linha);
+    border-radius: var(--aw-raio);
+  }
+
+  .depoimento__topo {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .depoimento__aspas {
+    width: 40px;
+    height: 40px;
+    padding: 4px;
+    color: var(--aw-acento);
+  }
+
+  .depoimento__texto {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--aw-tinta-suave);
+  }
+
+  .depoimento__autor {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 16px;
+    border-top: 1px solid var(--aw-linha);
+  }
+
+  .depoimento__nome {
+    font-family: var(--aw-fonte-titulo);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    color: var(--aw-primaria);
+  }
+
+  .depoimento__projeto {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    letter-spacing: 0.5px;
+    color: var(--aw-acento);
+    text-transform: uppercase;
+  }
+}
+
+/* ==========================================================================
+   3. Blog (fundo areia, 3 cards 384×516)
+   ========================================================================== */
+.home .secao--blog {
+  background: var(--aw-fundo-alt);
+
+  .btn--blog {
+    min-width: 220px;
+  }
+}
+
+/* ==========================================================================
+   Ajustes de cabeçalho de seção no mobile
+   ========================================================================== */
+@media (max-width: 767.98px) {
+  .home {
+    .secao--empreendimentos .secao__cabecalho--linha {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .secao--blog .secao__cabecalho--linha {
+      align-items: flex-end;
+    }
+  }
+}
+
+/* ==========================================================================
+   Mobile — Figma "home-mobile" (390px). Vale até 767.98px.
+   Componentes compartilhados (header, hero, cards, rodapé…) estão no bloco
+   "Mobile" de style.css; aqui ficam só os ajustes da home.
+   ========================================================================== */
+@media (max-width: 767.98px) {
+  .home {
+    .titulo-secao {
+      font-size: 30px;
+      line-height: 1.2;
+    }
+
+    /* ---- Empreendimentos: abas de 14px com traço 32×2 centralizado ------ */
+    .secao--empreendimentos {
+      .titulo-secao--emp {
+        max-width: none;
+      }
+
+      .abas {
+        flex-wrap: nowrap;
+        gap: 16px;
+        max-width: 100%;
+        overflow-x: auto;
+        scrollbar-width: none;
+
+        .abas__item {
+          padding-bottom: 8px;
+          font-size: 14px;
+          line-height: 17px;
+          color: var(--aw-tinta-fraca);
+          white-space: nowrap;
+
+          &::after {
+            right: auto;
+            left: 50%;
+            width: 32px;
+            transform: translateX(-50%) scaleX(0);
+          }
+
+          &.is-ativa {
+            color: var(--aw-primaria);
+
+            &::after {
+              transform: translateX(-50%) scaleX(1);
+            }
+          }
+        }
+      }
+
+      .secao__acoes .btn {
+        min-width: 286px;
+      }
+    }
+
+    /* ---- A empresa: título e texto → imagem → indicadores → botão -------
+       .empresa e .empresa__texto viram "contents" para os filhos entrarem
+       na coluna do container e o botão ir para o fim, como no layout. */
+    .secao--empresa {
+      > .container {
+        gap: 40px;
+      }
+
+      .empresa,
+      .empresa__texto {
+        display: contents;
+      }
+
+      .empresa__titulos {
+        order: 1;
+      }
+
+      .empresa__descricao {
+        order: 2;
+        margin-top: -16px; /* 24px entre título e texto */
+      }
+
+      .empresa__visual {
+        order: 3;
+      }
+
+      .indicadores {
+        order: 4;
+      }
+
+      .empresa__texto > div:last-child {
+        order: 5;
+
+        .btn {
+          width: 100%;
+          min-height: 50px;
+          padding: 12px 20px;
+          font-size: 14px;
+          line-height: 17px;
+        }
+      }
+    }
+
+    /* ---- Depoimentos: 1 card, bolinhas no lugar das setas --------------- */
+    .secao--depoimentos {
+      .setas {
+        display: none;
+      }
+
+      .depoimento {
+        gap: 20px;
+        min-height: 0;
+        padding: 24px;
+      }
+
+      .depoimento__topo {
+        gap: 12px;
+      }
+
+      .depoimento__aspas {
+        width: 32px;
+        height: 32px;
+      }
+
+      .depoimento__texto {
+        font-size: 15px;
+        line-height: 1.53;
+      }
+
+      .depoimento__autor {
+        padding-top: 20px;
+      }
+
+      .depoimento__nome {
+        font-size: 15px;
+        line-height: 19px;
+      }
+
+      .pontos {
+        margin-top: 16px;
+
+        .swiper-pagination-bullet {
+          background: var(--aw-fundo);
+        }
+
+        .swiper-pagination-bullet-active {
+          background: var(--aw-acento);
+        }
+      }
+    }
+
+    /* ---- Blog: carrossel de 1 card, botão e bolinhas embaixo ------------ */
+    .secao--blog {
+      > .container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .secao__cabecalho {
+        display: contents;
+      }
+
+      .secao__titulos {
+        order: 1;
+        margin-bottom: 32px;
+      }
+
+      .kicker {
+        font-size: 14px;
+        line-height: 18px;
+      }
+
+      .blog-grid {
+        position: relative;
+        order: 2;
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        > * {
+          flex: 0 0 100%;
+          scroll-snap-align: start;
+        }
+      }
+
+      .btn--blog {
+        order: 3;
+        align-self: center;
+        min-width: 0;
+        margin-top: 32px;
+        padding-inline: 16px;
+      }
+
+      .pontos {
+        order: 4;
+        margin-top: 32px;
+      }
+
+      /* Card da home: maior que o da lista do blog (342×569) */
+      .post-card {
+        gap: 20px;
+        padding: 24px;
+        border-radius: var(--aw-raio-lg);
+
+        .post-card__midia {
+          aspect-ratio: 294 / 220;
+        }
+
+        .post-card__titulo {
+          font-size: 22px;
+          line-height: 1.32;
+        }
+
+        .post-card__resumo {
+          font-size: 15px;
+          line-height: 1.6;
+          -webkit-line-clamp: 4;
+        }
+
+        .link-seta {
+          gap: 8px;
+        }
+
+        .post-card__data {
+          display: none;
+        }
+      }
+    }
+
+    /* ---- Instagram: uma coluna de 342px --------------------------------- */
+    .secao--instagram .instagram-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

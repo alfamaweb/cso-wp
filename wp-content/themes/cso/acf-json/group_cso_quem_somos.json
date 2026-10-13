@@ -1,0 +1,805 @@
+{
+    "key": "group_cso_quem_somos",
+    "title": "Quem Somos",
+    "fields": [
+        {
+            "key": "field_cso_qs_tab_0",
+            "label": "Hero",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_qs_qs_hero_titulo",
+            "label": "Título",
+            "name": "qs_hero_titulo",
+            "type": "textarea",
+            "instructions": "Quebra de linha é respeitada.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Conheça a CSO Engenharia",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_qs_qs_hero_texto",
+            "label": "Texto de apoio",
+            "name": "qs_hero_texto",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Desde 1989, unindo engenharia de precisão…",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_qs_qs_hero_botao",
+            "label": "Botão",
+            "name": "qs_hero_botao",
+            "type": "link",
+            "instructions": "Vazio: \"Ver Empreendimentos\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_cso_qs_qs_hero_imagem",
+            "label": "Imagem de fundo",
+            "name": "qs_hero_imagem",
+            "type": "image",
+            "instructions": "1920×450. Vazio usa a imagem destacada da página.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_cso_qs_tab_5",
+            "label": "Indicadores",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_qs_qs_indicadores_kicker",
+            "label": "Rótulo (acima do título)",
+            "name": "qs_indicadores_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Números de destaque",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_qs_qs_indicadores_titulo",
+            "label": "Título",
+            "name": "qs_indicadores_titulo",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Indicadores e Relevância",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_qs_qs_indicadores",
+            "label": "Indicadores",
+            "name": "qs_indicadores",
+            "type": "repeater",
+            "instructions": "Até 4 cards. Vazio usa os números do layout.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 4,
+            "layout": "table",
+            "button_label": "Adicionar indicador",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cso_qs_numero",
+                    "label": "Número",
+                    "name": "numero",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "+5.000",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_cso_qs_rotulo",
+                    "label": "Rótulo",
+                    "name": "rotulo",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Unidades habitacionais",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_cso_qs_tab_11",
+            "label": "A empresa",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_qs_qs_empresa_kicker",
+            "label": "Rótulo (acima do título)",
+            "name": "qs_empresa_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "A empresa",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_qs_qs_empresa_titulo",
+            "label": "Título",
+            "name": "qs_empresa_titulo",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Nossos verbos preferidos\nsão desenhar e otimizar.",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_qs_qs_empresa_texto",
+            "label": "Texto",
+            "name": "qs_empresa_texto",
+            "type": "wysiwyg",
+            "instructions": "Dois parágrafos no layout.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 1
+        },
+        {
+            "key": "field_cso_qs_qs_empresa_imagem",
+            "label": "Imagem",
+            "name": "qs_empresa_imagem",
+            "type": "image",
+            "instructions": "587×500.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_cso_qs_qs_empresa_anos",
+            "label": "Selo — número",
+            "name": "qs_empresa_anos",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "+35",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_qs_qs_empresa_anos_rotulo",
+            "label": "Selo — rótulo",
+            "name": "qs_empresa_anos_rotulo",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Anos de história",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_qs_tab_18",
+            "label": "História",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_qs_qs_historia_kicker",
+            "label": "Rótulo (acima do título)",
+            "name": "qs_historia_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Nossa história",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_qs_qs_historia_titulo",
+            "label": "Título",
+            "name": "qs_historia_titulo",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "História e Evolução da Marca",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_qs_qs_historia",
+            "label": "Marcos",
+            "name": "qs_historia",
+            "type": "repeater",
+            "instructions": "Carrossel em ordem cronológica. Vazio usa os marcos do layout.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_cso_qs_periodo",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Adicionar marco",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cso_qs_logo",
+                    "label": "Logomarca da época",
+                    "name": "logo",
+                    "type": "image",
+                    "instructions": "60×60. Vazio usa o logo atual.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_cso_qs_periodo",
+                    "label": "Período",
+                    "name": "periodo",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "75",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "1989 à 1992",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_cso_qs_texto",
+                    "label": "Texto",
+                    "name": "texto",
+                    "type": "textarea",
+                    "instructions": "Linha em branco separa parágrafos.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 5,
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_cso_qs_tab_25",
+            "label": "Institucional",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_qs_qs_blocos",
+            "label": "Blocos",
+            "name": "qs_blocos",
+            "type": "repeater",
+            "instructions": "Imagem e texto em linhas alternadas: ímpares com a imagem à esquerda, pares à direita. Vazio usa Responsabilidade social e Política de qualidade.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_cso_qs_titulo",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Adicionar bloco",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cso_qs_imagem",
+                    "label": "Imagem",
+                    "name": "imagem",
+                    "type": "image",
+                    "instructions": "1º bloco 482×500; 2º 694×400.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_cso_qs_kicker",
+                    "label": "Rótulo",
+                    "name": "kicker",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Responsabilidade social",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_cso_qs_titulo",
+                    "label": "Título",
+                    "name": "titulo",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Garantimos cumprir nosso papel como uma empresa cidadã",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_cso_qs_texto_2",
+                    "label": "Texto",
+                    "name": "texto",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "visual",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 1
+                }
+            ]
+        },
+        {
+            "key": "field_cso_qs_tab_31",
+            "label": "Instagram",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_qs_qs_instagram_kicker",
+            "label": "Rótulo (acima do título)",
+            "name": "qs_instagram_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Instagram",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_qs_qs_instagram_titulo",
+            "label": "Título",
+            "name": "qs_instagram_titulo",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Acompanhe nossas novidades",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_qs_msg_34",
+            "label": "Sobre esta seção",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "O @ do perfil e o link do botão vêm de <strong>Opções do Site › Redes sociais</strong>.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_cso_qs_qs_instagram",
+            "label": "Posts",
+            "name": "qs_instagram",
+            "type": "repeater",
+            "instructions": "Até 4 posts. Vazio mostra o layout de exemplo.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 4,
+            "layout": "table",
+            "button_label": "Adicionar post",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cso_qs_imagem_2",
+                    "label": "Imagem",
+                    "name": "imagem",
+                    "type": "image",
+                    "instructions": "Quadrada, 600×600.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_cso_qs_link",
+                    "label": "Link do post",
+                    "name": "link",
+                    "type": "url",
+                    "instructions": "Vazio leva ao perfil.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "https://www.instagram.com/p/…"
+                },
+                {
+                    "key": "field_cso_qs_curtidas",
+                    "label": "Curtidas",
+                    "name": "curtidas",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "248",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_cso_qs_comentarios",
+                    "label": "Comentários",
+                    "name": "comentarios",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "18",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "aw_pagina",
+                "operator": "==",
+                "value": "quem-somos"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "page-quem-somos.php",
+    "show_in_rest": 0,
+    "modified": 1790800000
+}

@@ -1,0 +1,222 @@
+{
+    "key": "group_cso_empreendimentos",
+    "title": "Empreendimentos (página)",
+    "fields": [
+        {
+            "key": "field_cso_emp_tab_0",
+            "label": "Hero",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_emp_emp_hero_destaque",
+            "label": "Empreendimento em destaque",
+            "name": "emp_hero_destaque",
+            "type": "post_object",
+            "instructions": "Define título, texto (resumo do empreendimento), imagem (destacada) e o link do botão. Vazio usa o lançamento mais recente. Os campos abaixo, se preenchidos, sobrepõem cada item.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "empreendimento"
+            ],
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 1,
+            "bidirectional": 0
+        },
+        {
+            "key": "field_cso_emp_emp_hero_titulo",
+            "label": "Título",
+            "name": "emp_hero_titulo",
+            "type": "textarea",
+            "instructions": "Quebra de linha é respeitada.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Bless Houses",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_emp_emp_hero_texto",
+            "label": "Texto de apoio",
+            "name": "emp_hero_texto",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Casas em condomínio fechado no Papagaio…",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_emp_emp_hero_botao",
+            "label": "Botão",
+            "name": "emp_hero_botao",
+            "type": "link",
+            "instructions": "Vazio: \"Quero saber mais\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_cso_emp_emp_hero_imagem",
+            "label": "Imagem de fundo",
+            "name": "emp_hero_imagem",
+            "type": "image",
+            "instructions": "1920×450. Vazio usa a imagem destacada da página.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_cso_emp_tab_6",
+            "label": "Listagem",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_emp_emp_kicker",
+            "label": "Rótulo (acima do título)",
+            "name": "emp_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Empreendimentos",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_emp_emp_titulo",
+            "label": "Título",
+            "name": "emp_titulo",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "As melhores opções para você",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_emp_msg_9",
+            "label": "Sobre esta seção",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Os cards vêm do post type <strong>Empreendimentos</strong>; as abas filtram pelo status da obra.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "aw_pagina",
+                "operator": "==",
+                "value": "empreendimentos"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "page-empreendimentos.php",
+    "show_in_rest": 0,
+    "modified": 1790800000
+}

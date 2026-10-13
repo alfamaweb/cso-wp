@@ -1,0 +1,97 @@
+/*
+ * Empreendimentos — estilos exclusivos de page-empreendimentos.php.
+ *
+ * Medidas do frame "empreendimentos" do Figma (1600px, conteúdo em 1200px).
+ * Hero, card (.emp-card, .emp-grid), abas de filtro (.abas-filtro) e
+ * paginação em círculos (.paginacao-circulos) vêm de assets/css/style.css.
+ * Seletores aninhados (sintaxe SCSS / CSS Nesting nativo), sem concatenação
+ * "&__"; só tokens var(--aw-*).
+ */
+
+/* ==========================================================================
+   Listagem (fundo branco, padding 72, grade 3×3 com 48px entre linhas,
+   paginação 48px abaixo da última linha)
+   ========================================================================== */
+.empreendimentos .secao--emp-lista {
+  background: var(--aw-fundo);
+
+  /* Título à esquerda, abas alinhadas à base do título, à direita */
+  .emp-lista__cabecalho {
+    align-items: flex-end;
+
+    @media (max-width: 767.98px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .emp-grid {
+    row-gap: 48px;
+
+    @media (max-width: 575.98px) {
+      row-gap: 32px;
+    }
+
+    &[aria-busy="true"] {
+      pointer-events: none;
+    }
+
+    .aw-skeleton {
+      height: 633px;
+      border-radius: var(--aw-raio);
+    }
+
+    .aw-vazio {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .emp-lista__paginacao {
+    margin-top: 48px;
+  }
+}
+
+/* ==========================================================================
+   Mobile — Figma "empreendimentos-mobile" (390px). Vale até 767.98px.
+   ========================================================================== */
+@media (max-width: 767.98px) {
+  .empreendimentos {
+    /* Hero: padding 40/16/40/24, título 32, botão de 44px na largura toda */
+    .hero.hero--interna {
+      .hero__inner {
+        padding: 40px 16px 40px 24px;
+      }
+
+      .hero__titulo {
+        line-height: 1.19;
+      }
+
+      .hero__subtitulo {
+        line-height: 1.5;
+      }
+
+      .hero__ctas .btn {
+        min-height: 44px;
+        padding: 12px;
+      }
+    }
+
+    /* Listagem em fundo areia no mobile, cards com 20px entre si */
+    .secao--emp-lista {
+      background: var(--aw-fundo-alt);
+
+      .titulo-secao {
+        font-size: 30px;
+        line-height: 1.2;
+      }
+
+      .emp-grid {
+        row-gap: 20px;
+      }
+
+      .emp-lista__paginacao {
+        margin-top: 32px;
+      }
+    }
+  }
+}

@@ -1,0 +1,906 @@
+{
+    "key": "group_cso_home",
+    "title": "Home",
+    "fields": [
+        {
+            "key": "field_cso_home_tab_0",
+            "label": "Hero",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_home_home_hero_titulo",
+            "label": "Título",
+            "name": "home_hero_titulo",
+            "type": "textarea",
+            "instructions": "Quebra de linha é respeitada.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Solidez que transforma\no horizonte baiano.",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_home_home_hero_texto",
+            "label": "Texto de apoio",
+            "name": "home_hero_texto",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Desde 1989, unindo engenharia de precisão e a sofisticação que sua vida merece…",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_home_home_hero_botao",
+            "label": "Botão",
+            "name": "home_hero_botao",
+            "type": "link",
+            "instructions": "Vazio: \"Conhecer lançamentos\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_cso_home_home_hero_video",
+            "label": "Vídeo de fundo (desktop)",
+            "name": "home_hero_video",
+            "type": "file",
+            "instructions": "MP4 (H.264), sem áudio, até 1600×900 e ~3 MB. Toca mudo, em loop e sem controles. Só é baixado depois que a página carrega.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "mp4"
+        },
+        {
+            "key": "field_cso_home_home_hero_video_mobile",
+            "label": "Vídeo de fundo (mobile)",
+            "name": "home_hero_video_mobile",
+            "type": "file",
+            "instructions": "Opcional. Recorte vertical (ex.: 640×800) e mais leve, usado em telas até 767px. Vazio: o mobile usa o vídeo de desktop.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "mp4"
+        },
+        {
+            "key": "field_cso_home_home_hero_imagem",
+            "label": "Capa do vídeo",
+            "name": "home_hero_imagem",
+            "type": "image",
+            "instructions": "Primeiro quadro do vídeo, 1920×1080. Aparece enquanto o vídeo carrega e no lugar dele com \"reduzir movimento\" ou economia de dados.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_cso_home_tab_6",
+            "label": "Empreendimentos",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_home_home_emp_kicker",
+            "label": "Rótulo (acima do título)",
+            "name": "home_emp_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Portfólio",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_home_home_emp_titulo",
+            "label": "Título",
+            "name": "home_emp_titulo",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Nossos Empreendimentos",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_home_home_emp_botao",
+            "label": "Botão abaixo dos cards",
+            "name": "home_emp_botao",
+            "type": "link",
+            "instructions": "Vazio: \"Ver todos os empreendimentos\" → página Empreendimentos.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_cso_home_msg_10",
+            "label": "Sobre esta seção",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Os cards vêm do post type <strong>Empreendimentos</strong> (até 9, pela ordem de <em>Atributos da página › Ordem</em>). Cada aba mostra até 3.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_cso_home_tab_11",
+            "label": "A empresa",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_home_home_empresa_kicker",
+            "label": "Rótulo (acima do título)",
+            "name": "home_empresa_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "A empresa",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_home_home_empresa_titulo",
+            "label": "Título",
+            "name": "home_empresa_titulo",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Nossos verbos preferidos\nsão desenhar e otimizar.",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_home_home_empresa_texto",
+            "label": "Texto",
+            "name": "home_empresa_texto",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Somos referência em construção civil de alto padrão…",
+            "maxlength": "",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_home_home_empresa_botao",
+            "label": "Botão",
+            "name": "home_empresa_botao",
+            "type": "link",
+            "instructions": "Vazio: \"Leia mais sobre a empresa\" → Quem Somos.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_cso_home_home_empresa_imagem",
+            "label": "Imagem",
+            "name": "home_empresa_imagem",
+            "type": "image",
+            "instructions": "587×500.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_cso_home_home_empresa_anos",
+            "label": "Selo — número",
+            "name": "home_empresa_anos",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "+35",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_home_home_empresa_anos_rotulo",
+            "label": "Selo — rótulo",
+            "name": "home_empresa_anos_rotulo",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Anos de história",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_home_tab_19",
+            "label": "Indicadores",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_home_home_indicadores_kicker",
+            "label": "Rótulo (acima do título)",
+            "name": "home_indicadores_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Desempenho",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_home_home_indicadores_titulo",
+            "label": "Título",
+            "name": "home_indicadores_titulo",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Indicadores e Relevância",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_home_home_indicadores",
+            "label": "Indicadores",
+            "name": "home_indicadores",
+            "type": "repeater",
+            "instructions": "Até 4 cards. Vazio usa os números do layout.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 4,
+            "layout": "table",
+            "button_label": "Adicionar indicador",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cso_home_numero",
+                    "label": "Número",
+                    "name": "numero",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "+5.000",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_cso_home_rotulo",
+                    "label": "Rótulo",
+                    "name": "rotulo",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Unidades habitacionais",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_cso_home_tab_25",
+            "label": "Depoimentos",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_home_home_depoimentos_kicker",
+            "label": "Rótulo (acima do título)",
+            "name": "home_depoimentos_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Depoimentos",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_home_home_depoimentos_titulo",
+            "label": "Título",
+            "name": "home_depoimentos_titulo",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "O que dizem nossos clientes",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_home_home_depoimentos",
+            "label": "Depoimentos",
+            "name": "home_depoimentos",
+            "type": "repeater",
+            "instructions": "Carrossel: 3 por vez no desktop. Vazio usa os depoimentos do layout.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_cso_home_nome",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Adicionar depoimento",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cso_home_texto",
+                    "label": "Depoimento",
+                    "name": "texto",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 4,
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_cso_home_nome",
+                    "label": "Nome",
+                    "name": "nome",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Juliana & Roberto Silva",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_cso_home_projeto",
+                    "label": "Empreendimento • bairro",
+                    "name": "projeto",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Bless Houses • Papagaio",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_cso_home_tab_32",
+            "label": "Blog",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_home_home_blog_kicker",
+            "label": "Rótulo (acima do título)",
+            "name": "home_blog_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Blog",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_home_home_blog_titulo",
+            "label": "Título",
+            "name": "home_blog_titulo",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Últimas Notícias",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_home_home_blog_botao",
+            "label": "Botão",
+            "name": "home_blog_botao",
+            "type": "link",
+            "instructions": "Vazio: \"Ver todas as notícias\" → página Blog.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_cso_home_msg_36",
+            "label": "Sobre esta seção",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Os 3 cards são os posts mais recentes.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_cso_home_tab_37",
+            "label": "Instagram",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_home_home_instagram_kicker",
+            "label": "Rótulo (acima do título)",
+            "name": "home_instagram_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Instagram",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_home_home_instagram_titulo",
+            "label": "Título",
+            "name": "home_instagram_titulo",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Acompanhe nossas novidades",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_home_msg_40",
+            "label": "Sobre esta seção",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "O @ do perfil e o link do botão vêm de <strong>Opções do Site › Redes sociais</strong>.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_cso_home_home_instagram",
+            "label": "Posts",
+            "name": "home_instagram",
+            "type": "repeater",
+            "instructions": "Até 4 posts. Vazio mostra o layout de exemplo.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 4,
+            "layout": "table",
+            "button_label": "Adicionar post",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cso_home_imagem",
+                    "label": "Imagem",
+                    "name": "imagem",
+                    "type": "image",
+                    "instructions": "Quadrada, 600×600.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_cso_home_link",
+                    "label": "Link do post",
+                    "name": "link",
+                    "type": "url",
+                    "instructions": "Vazio leva ao perfil.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "https://www.instagram.com/p/…"
+                },
+                {
+                    "key": "field_cso_home_curtidas",
+                    "label": "Curtidas",
+                    "name": "curtidas",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "248",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_cso_home_comentarios",
+                    "label": "Comentários",
+                    "name": "comentarios",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "18",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "aw_pagina",
+                "operator": "==",
+                "value": "home"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "page-home.php",
+    "show_in_rest": 0,
+    "modified": 1791900000
+}

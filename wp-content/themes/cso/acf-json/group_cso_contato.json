@@ -1,0 +1,397 @@
+{
+    "key": "group_cso_contato",
+    "title": "Contato",
+    "fields": [
+        {
+            "key": "field_cso_contato_tab_0",
+            "label": "Hero",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_contato_contato_hero_titulo",
+            "label": "Título",
+            "name": "contato_hero_titulo",
+            "type": "textarea",
+            "instructions": "Quebra de linha é respeitada.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "CSO Atendimento",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_contato_contato_hero_texto",
+            "label": "Texto de apoio",
+            "name": "contato_hero_texto",
+            "type": "textarea",
+            "instructions": "Opcional (o layout não tem texto de apoio).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_contato_contato_hero_botao",
+            "label": "Botão",
+            "name": "contato_hero_botao",
+            "type": "link",
+            "instructions": "Vazio: \"Entre em contato\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_cso_contato_contato_hero_imagem",
+            "label": "Imagem de fundo",
+            "name": "contato_hero_imagem",
+            "type": "image",
+            "instructions": "1920×450. Vazio usa a imagem destacada da página.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_cso_contato_tab_5",
+            "label": "Canais",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_contato_contato_canais_kicker",
+            "label": "Rótulo (acima do título)",
+            "name": "contato_canais_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Central de relacionamento",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_contato_contato_canais_titulo",
+            "label": "Título",
+            "name": "contato_canais_titulo",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Principais contatos",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_contato_contato_canais",
+            "label": "Cards de contato",
+            "name": "contato_canais",
+            "type": "repeater",
+            "instructions": "Até 3 cards. Vazio monta Telefone, E-mail e Endereço a partir de Opções do Site › Contato.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_cso_contato_titulo",
+            "min": 0,
+            "max": 3,
+            "layout": "block",
+            "button_label": "Adicionar card",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cso_contato_tipo",
+                    "label": "Tipo",
+                    "name": "tipo",
+                    "type": "select",
+                    "instructions": "Define o ícone e o link de cada linha (tel:, mailto: ou Google Maps).",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "telefone": "Telefone",
+                        "email": "E-mail",
+                        "endereco": "Endereço"
+                    },
+                    "default_value": "telefone",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0
+                },
+                {
+                    "key": "field_cso_contato_titulo",
+                    "label": "Título do card",
+                    "name": "titulo",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "75",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Nossos Telefones",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_cso_contato_itens",
+                    "label": "Linhas",
+                    "name": "itens",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 0,
+                    "max": 0,
+                    "layout": "table",
+                    "button_label": "Adicionar linha",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_cso_contato_rotulo",
+                            "label": "Rótulo",
+                            "name": "rotulo",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "40",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "Atendimento e Vendas",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_cso_contato_valor",
+                            "label": "Valor",
+                            "name": "valor",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "(75) 3623-2546",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_cso_contato_tab_14",
+            "label": "Formulário",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_contato_contato_form_kicker",
+            "label": "Rótulo (acima do título)",
+            "name": "contato_form_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Envie sua mensagem",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_contato_contato_form_titulo",
+            "label": "Título",
+            "name": "contato_form_titulo",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Nossa equipe responderá o mais breve possível",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_contato_contato_form_subtitulo",
+            "label": "Título do formulário",
+            "name": "contato_form_subtitulo",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Preencha as informações abaixo",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_contato_msg_18",
+            "label": "Sobre esta seção",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "As mensagens vão para o e-mail de <strong>Opções do Site › Contato</strong>.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "aw_pagina",
+                "operator": "==",
+                "value": "contato"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "page-contato.php",
+    "show_in_rest": 0,
+    "modified": 1790800000
+}

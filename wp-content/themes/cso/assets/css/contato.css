@@ -1,0 +1,203 @@
+/*
+ * Contato — estilos exclusivos de page-contato.php.
+ *
+ * Medidas do frame "contato" do Figma (1600px, conteúdo em 1200px). Hero,
+ * kicker, títulos e o formulário (.form-contato, .campo, .aceite) vêm de
+ * assets/css/style.css. Seletores aninhados (sintaxe SCSS / CSS Nesting
+ * nativo), sem concatenação "&__"; só tokens var(--aw-*).
+ */
+
+/* ==========================================================================
+   1. Hero — overlay do layout um pouco mais leve (45%)
+   ========================================================================== */
+.contato .hero::after {
+  background: color-mix(in srgb, var(--aw-primaria) 45%, transparent);
+}
+
+/* ==========================================================================
+   2. Canais (fundo #1E2530, 3 cards 384×200: padding 32, gap 20, borda)
+   ========================================================================== */
+.contato .secao--canais {
+  background: var(--aw-primaria-clara);
+
+  .canais {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+
+    @media (max-width: 991.98px) {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+    }
+  }
+
+  .canal {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 200px;
+    padding: 32px;
+    background: var(--aw-fundo);
+    border: 1px solid var(--aw-linha);
+    border-radius: var(--aw-raio);
+
+    @media (max-width: 575.98px) {
+      min-height: 0;
+      padding: 24px;
+    }
+  }
+
+  /* Ícone 32px dourado + título Sora 700 16; linha #E5E7EB abaixo */
+  .canal__cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--aw-linha);
+  }
+
+  .canal__icone {
+    flex: none;
+    width: 32px;
+    height: 32px;
+    color: var(--aw-acento);
+  }
+
+  .canal__titulo {
+    font-family: var(--aw-fonte-titulo);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    color: var(--aw-primaria);
+  }
+
+  .canal__itens {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--aw-tinta-corpo);
+
+    strong {
+      font-weight: 700;
+    }
+
+    a {
+      transition: color var(--aw-transicao);
+
+      &:hover {
+        color: var(--aw-acento);
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+   3. Formulário (fundo #F8F9FA, 40px entre o título e o card)
+   ========================================================================== */
+.contato .secao--formulario {
+  background: var(--aw-fundo-frio);
+
+  .secao__cabecalho {
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+
+  .titulo-secao {
+    line-height: 1.25;
+  }
+}
+
+/* ==========================================================================
+   Mobile — Figma "contato-mobile" (390px). Vale até 767.98px.
+   ========================================================================== */
+@media (max-width: 767.98px) {
+  .contato {
+    .titulo-secao {
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    /* ---- Hero de 288px: padding 48/24, título 32, texto 15 -------------- */
+    .hero.hero--interna {
+      min-height: 0;
+
+      .hero__inner {
+        padding: 48px 24px;
+      }
+
+      .hero__textos {
+        gap: 12px;
+      }
+
+      .hero__subtitulo {
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.53;
+      }
+
+      .hero__ctas .btn {
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+
+    /* ---- Canais: cards de padding 24, linhas de 14px com 12px entre si -- */
+    .secao--canais {
+      .canais {
+        gap: 20px;
+        max-width: none;
+      }
+
+      .canal {
+        gap: 16px;
+        padding: 24px;
+      }
+
+      .canal__cabecalho {
+        gap: 12px;
+      }
+
+      .canal__itens {
+        gap: 12px;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+
+    /* ---- Formulário: card de padding 20, campos em uma coluna ----------- */
+    .secao--formulario {
+      .secao__cabecalho {
+        margin-bottom: 24px;
+      }
+
+      .form-contato {
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .form-contato__titulo {
+        font-size: 18px;
+        line-height: 23px;
+      }
+
+      .form-contato__grade {
+        gap: 16px;
+      }
+
+      .form-contato__rodape {
+        margin-top: 0;
+      }
+
+      .form-contato__enviar {
+        width: 100%;
+        min-width: 0;
+        min-height: 46px;
+        font-size: 15px;
+        line-height: 18px;
+      }
+    }
+  }
+}

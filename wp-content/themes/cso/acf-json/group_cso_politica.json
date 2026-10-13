@@ -1,0 +1,99 @@
+{
+    "key": "group_cso_politica",
+    "title": "Política de Privacidade",
+    "fields": [
+        {
+            "key": "field_cso_politica_msg_0",
+            "label": "Sobre esta seção",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "O texto da política é o <strong>conteúdo da página</strong> (editor acima). Vale para a página escolhida em Configurações › Privacidade.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_cso_politica_politica_kicker",
+            "label": "Rótulo (acima do título)",
+            "name": "politica_kicker",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Política de privacidade",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_politica_politica_titulo",
+            "label": "Título",
+            "name": "politica_titulo",
+            "type": "text",
+            "instructions": "Vazio usa o título da página.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "60",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Política de Privacidade e Segurança",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_politica_politica_pdf",
+            "label": "PDF para download",
+            "name": "politica_pdf",
+            "type": "file",
+            "instructions": "Mostra o botão \"Baixar PDF\". Vazio esconde o botão.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "pdf"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "aw_pagina",
+                "operator": "==",
+                "value": "politica-de-privacidade"
+            }
+        ]
+    ],
+    "menu_order": 2,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "page-politica-de-privacidade.php",
+    "show_in_rest": 0,
+    "modified": 1790800000
+}

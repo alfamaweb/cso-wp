@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480" role="img" aria-label="Imagem não disponível">
+  <rect width="720" height="480" fill="#f4f5f7"/>
+  <path d="M0 0h720v480H0z" fill="none"/>
+  <g fill="#c3c8d2">
+    <circle cx="270" cy="180" r="34"/>
+    <path d="M150 360l120-130 90 96 70-70 140 104z"/>
+  </g>
+</svg>

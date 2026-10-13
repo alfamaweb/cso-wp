@@ -1,0 +1,18 @@
+# Dependências de build — o tema roda em produção sem npm.
+node_modules/
+package-lock.json
+
+# assets/css/tailwind.css É versionado de propósito: produção não roda build.
+# Nada de ignorá-lo aqui.
+
+# Lixo de sistema e de editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/*
+!.vscode/settings.json
+
+# Nunca versione segredo: as credenciais moram no wp-config.php do servidor.
+.env
+.env.*

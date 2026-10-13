@@ -1,0 +1,776 @@
+{
+    "key": "group_cso_empreendimento",
+    "title": "Empreendimento",
+    "fields": [
+        {
+            "key": "field_cso_empreendimento_tab_0",
+            "label": "Hero e card",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_empreendimento_msg_1",
+            "label": "Sobre esta seção",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Título: <strong>título do post</strong>. Selo: <strong>Status da obra</strong>. Imagem do card na listagem: <strong>imagem destacada</strong> (384×460). \"100% vendido\" completa a barra e troca o formulário por um link para os outros empreendimentos.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_cso_empreendimento_hero_imagem",
+            "label": "Imagem de fundo do topo",
+            "name": "hero_imagem",
+            "type": "image",
+            "instructions": "1920×600. Vazio usa a imagem destacada.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_cso_empreendimento_localizacao_texto",
+            "label": "Localização",
+            "name": "localizacao_texto",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "60",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Santa Mônica, Feira de Santana",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_empreendimento_percentual_vendido",
+            "label": "Percentual vendido",
+            "name": "percentual_vendido",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "83",
+            "prepend": "",
+            "append": "%",
+            "min": 0,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "key": "field_cso_empreendimento_diferenciais_resumo",
+            "label": "Resumo do card (em \"Ver detalhes\")",
+            "name": "diferenciais_resumo",
+            "type": "repeater",
+            "instructions": "Até 4 itens. Aparece só no card da listagem.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 4,
+            "layout": "table",
+            "button_label": "Adicionar item",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cso_empreendimento_titulo",
+                    "label": "Item",
+                    "name": "titulo",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Apartamentos de 2 e 3 quartos",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_cso_empreendimento_tab_7",
+            "label": "Diferenciais",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_empreendimento_diferenciais_titulo",
+            "label": "Título",
+            "name": "diferenciais_titulo",
+            "type": "text",
+            "instructions": "Vazio: \"Por que escolher o\" + nome do empreendimento.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Por que escolher o {nome do empreendimento}",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_empreendimento_diferenciais",
+            "label": "Diferenciais",
+            "name": "diferenciais",
+            "type": "repeater",
+            "instructions": "Carrossel: 4 por vez no desktop. Vazio esconde a seção.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Adicionar diferencial",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cso_empreendimento_icone",
+                    "label": "Ícone",
+                    "name": "icone",
+                    "type": "image",
+                    "instructions": "40×40, claro.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "svg,png"
+                },
+                {
+                    "key": "field_cso_empreendimento_titulo_2",
+                    "label": "Diferencial",
+                    "name": "titulo",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "80",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Área Fitness",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_cso_empreendimento_tab_12",
+            "label": "Galeria",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_empreendimento_galeria_titulo",
+            "label": "Título",
+            "name": "galeria_titulo",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Áreas Comuns e Externas",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_empreendimento_galeria",
+            "label": "Imagens",
+            "name": "galeria",
+            "type": "gallery",
+            "instructions": "587×500. Abrem ampliadas ao clicar; a legenda vem da biblioteca de mídia. Vazio esconde a seção.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "insert": "append",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg,jpeg,png,webp"
+        },
+        {
+            "key": "field_cso_empreendimento_tab_15",
+            "label": "Vídeos",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_empreendimento_videos_titulo",
+            "label": "Título",
+            "name": "videos_titulo",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Seu futuro começa aqui!",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_empreendimento_videos",
+            "label": "Vídeos",
+            "name": "videos",
+            "type": "repeater",
+            "instructions": "Um por vez, com setas. Vazio esconde a seção.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Adicionar vídeo",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cso_empreendimento_url",
+                    "label": "Link do vídeo",
+                    "name": "url",
+                    "type": "url",
+                    "instructions": "YouTube ou Vimeo.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "https://www.youtube.com/watch?v=…"
+                },
+                {
+                    "key": "field_cso_empreendimento_capa",
+                    "label": "Capa",
+                    "name": "capa",
+                    "type": "image",
+                    "instructions": "1200×500. Vazio usa a miniatura do YouTube.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                }
+            ]
+        },
+        {
+            "key": "field_cso_empreendimento_tab_20",
+            "label": "Plantas",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_empreendimento_plantas_titulo",
+            "label": "Título",
+            "name": "plantas_titulo",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Escolha a melhor opção de planta para a sua família",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_empreendimento_plantas",
+            "label": "Plantas",
+            "name": "plantas",
+            "type": "repeater",
+            "instructions": "Clicar numa tipologia troca a imagem. Vazio esconde a seção.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Adicionar planta",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cso_empreendimento_nome",
+                    "label": "Tipologia",
+                    "name": "nome",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "35",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Duplex",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_cso_empreendimento_area",
+                    "label": "Área",
+                    "name": "area",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "95 m²",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_cso_empreendimento_imagem",
+                    "label": "Imagem",
+                    "name": "imagem",
+                    "type": "image",
+                    "instructions": "694×460.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                }
+            ]
+        },
+        {
+            "key": "field_cso_empreendimento_tab_26",
+            "label": "Andamento da obra",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_empreendimento_obra_titulo",
+            "label": "Título",
+            "name": "obra_titulo",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Acompanhe a evolução do seu futuro lar",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_empreendimento_obra_imagem",
+            "label": "Imagem",
+            "name": "obra_imagem",
+            "type": "image",
+            "instructions": "694×460.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_cso_empreendimento_obra_atualizacao",
+            "label": "Última atualização",
+            "name": "obra_atualizacao",
+            "type": "date_picker",
+            "instructions": "Exibido como \"Agosto 2026\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "m/Y",
+            "return_format": "Y-m-d",
+            "first_day": 0
+        },
+        {
+            "key": "field_cso_empreendimento_obra_etapas",
+            "label": "Etapas",
+            "name": "obra_etapas",
+            "type": "repeater",
+            "instructions": "O selo sai do percentual: 100% = Concluído, 1–99% = Em andamento, 0% = Próxima etapa. Vazio esconde a seção.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Adicionar etapa",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cso_empreendimento_etapa",
+                    "label": "Etapa",
+                    "name": "etapa",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Fundação",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_cso_empreendimento_percentual",
+                    "label": "Concluído",
+                    "name": "percentual",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "100",
+                    "prepend": "",
+                    "append": "%",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1
+                }
+            ]
+        },
+        {
+            "key": "field_cso_empreendimento_tab_33",
+            "label": "Localização",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cso_empreendimento_local_titulo",
+            "label": "Título",
+            "name": "local_titulo",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Tudo que você precisa em até 100m² de casa",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_empreendimento_local_texto",
+            "label": "Texto",
+            "name": "local_texto",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cso_empreendimento_local_endereco",
+            "label": "Endereço do empreendimento",
+            "name": "local_endereco",
+            "type": "text",
+            "instructions": "Usado nos botões \"Abrir no Google Maps\" e \"Abrir no Waze\" e no mapa. Vazio esconde a seção.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Rua …, Santa Mônica, Feira de Santana - BA",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_cso_empreendimento_mapa_imagem",
+            "label": "Imagem do mapa",
+            "name": "mapa_imagem",
+            "type": "image",
+            "instructions": "694×366. Opcional: vazio mostra o Google Maps do endereço.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "empreendimento"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "Card da listagem e página interna (single-empreendimento.php).",
+    "show_in_rest": 0,
+    "modified": 1790800000
+}

@@ -1,0 +1,78 @@
+/*
+ * Entrada do Tailwind v4 — compilada para assets/css/tailwind.css.
+ *
+ *   npm run dev    (watch)
+ *   npm run build  (minificado, para commit)
+ *
+ * Os breakpoints e a largura do .container reproduzem os do Bootstrap 5, que é
+ * a grade em que a equipe já pensa layout desde a v2. Manter esses números é
+ * uma decisão deliberada: o Bootstrap saiu, a grade dele ficou.
+ */
+
+@import "tailwindcss";
+
+@source "../**/*.php";
+
+@theme {
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+
+  /* Espelha os tokens de style.css, para usar as cores como utilitário
+     do Tailwind (bg-primaria, text-acento, border-linha…). */
+  --color-primaria: var(--aw-primaria);
+  --color-primaria-clara: var(--aw-primaria-clara);
+  --color-acento: var(--aw-acento);
+  --color-tinta: var(--aw-tinta);
+  --color-tinta-suave: var(--aw-tinta-suave);
+  --color-fundo-alt: var(--aw-fundo-alt);
+  --color-linha: var(--aw-linha);
+
+  --radius-aw: var(--aw-raio);
+  --font-sans: var(--aw-fonte);
+}
+
+/*
+ * .container — grade do projeto.
+ *
+ * Definido com @utility (e não em @layer components) porque o Tailwind v4 já
+ * gera uma utility "container" própria, com max-width igual ao breakpoint e
+ * sem padding. Em @layer components as duas regras coexistiam e a utility,
+ * que vem depois na cascata, vencia: em telas ≥1400px o conteúdo ficava com
+ * 1352px. @utility substitui a do Tailwind em vez de disputar com ela.
+ *
+ * O Tailwind ainda emite as regras padrão (max-width = breakpoint) antes das
+ * nossas; como as nossas vêm depois na mesma camada, e cobrem todos os
+ * breakpoints, são elas que valem.
+ *
+ * Larguras do Bootstrap até lg; a partir de xl o conteúdo fica em 1200px
+ * (1248 - 2 × 24 de padding), a largura do layout no Figma.
+ */
+@utility container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+
+  @media (width >= theme(--breakpoint-sm)) {
+    max-width: 540px;
+  }
+
+  @media (width >= theme(--breakpoint-md)) {
+    max-width: 720px;
+  }
+
+  @media (width >= theme(--breakpoint-lg)) {
+    max-width: 960px;
+  }
+
+  @media (width >= theme(--breakpoint-xl)) {
+    max-width: 1248px;
+  }
+
+  /* Repetido de propósito: anula o max-width: 1400px da utility padrão. */
+  @media (width >= theme(--breakpoint-2xl)) {
+    max-width: 1248px;
+  }
+}
